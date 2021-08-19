@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% block stylesheets %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'pricing.css' %}">
+{% endblock %}
+{% block content %}
+<section id="explore_pricing">
+    <h2>Explore Our Pricing</h2>
+    <div class="plan">
+        <div class="container">
+            <button class="btn border border-primary">Monthly</button>
+            <button class="btn btn-primary">Yearly</button>
+        </div>
+    </div>
+</section>
+
+<section class="customers">
+    <div class="container">
+        {# monthlyPlan #}
+        {# monthlyStudent #}
+        <section class="monthlyPlan">
+            {% include 'components/cards/monthly/monthlyStudent.html' %}
+             {# monthlyTutor #}
+             {% include 'components/cards/monthly/monthlyTutor.html' %}
+             {# monthlyPro  #}
+             {% include 'components/cards/monthly/monthlyPro.html' %}
+
+        </section>
+         {# yearlyPlan #}
+         {# yearlyStudent #}
+         <section class="yearlyPlan">
+
+             {% include 'components/cards/yearly/yearlyStudent.html' %}
+              {# monthlyTutor #}
+              {% include 'components/cards/yearly/yearlyTutor.html' %}
+              {# monthlyPro  #}
+              {% include 'components/cards/yearly/yearlyPro.html' %}
+         </section>
+         
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/costplan.js' %}"></script>
+{% endblock %}

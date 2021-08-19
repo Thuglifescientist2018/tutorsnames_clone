@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% block stylesheets %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'contact.css' %}">
+{% endblock %}
+{% block content %}
+<section id="contact">
+    <div class="container">
+        <div class="heading text-center">
+            <h2>Get In Touch</h2>
+        </div>
+        <div id="contactform">
+            <form method="POST" > {% csrf_token %}
+               
+            <div class="container">
+                <div class="wrapper">
+                    <div class="inputs">
+                        {{form.name}}
+                        {{form.email}}
+                    </div>
+                    <div class="message">
+                        {{form.message}}
+    
+                    </div>
+
+                </div>
+
+                <button class="btn" type="submit">Send message</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

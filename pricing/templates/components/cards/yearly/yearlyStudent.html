@@ -1,0 +1,80 @@
+<div id="yearlyStudent" class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Student</h5>
+      <div class="price">
+          <span>$</span><h2 class="d-inline">{{yearlyStudent.price}}</h2>/<span class="monthly">yearly</span>
+      </div>
+     <ul class="list">
+            <li>Follow/Unfollow:
+                {% if yearlyStudent.follow_or_unfollow %}
+                    <span class="boolean"> Right</span>
+                {% else %}
+                <span class="boolean"> Wrong</span>
+                {% endif %}
+            </li>
+            <li>Contact:
+                {% if yearlyStudent.contact %}
+                <span class="boolean"> Right</span>
+            {% else %}
+            <span class="boolean"> Wrong</span>
+            {% endif %}
+            </li>
+            <li>Appointment:
+                {% if yearlyStudent.appointment %}
+                <span class="boolean"> Right</span>
+            {% else %}
+            <span class="boolean"> Wrong</span>
+            {% endif %}
+            
+            </li>
+            <li>Blogs: 
+
+                {% if yearlyStudent.blogs %}
+                <span class="boolean"> Right</span>
+            {% else %}
+            <span class="boolean"> Wrong</span>
+            {% endif %}
+            </li>
+            <li>Portfolio: 
+
+                {% if yearlyStudent.portfolio %}
+                <span class="boolean"> Right</span>
+            {% else %}
+            <span class="boolean"> Wrong</span>
+            {% endif %}
+            </li>
+            <li>Skill:
+                {% if yearlyStudent.skill %}
+                <span class="boolean"> Right</span>
+            {% else %}
+            <span class="boolean"> Wrong</span>
+            {% endif %}
+            </li>
+            <li>Service: 
+
+                {% if yearlyStudent.service %}
+                <span class="boolean"> Right</span>
+            {% else %}
+            <span class="boolean"> Wrong</span>
+            {% endif %}
+            </li>
+            <li>Experience: 
+
+                {% if yearlyStudent.experience %}
+                <span class="boolean"> Right</span>
+            {% else %}
+            <span class="boolean"> Wrong</span>
+            {% endif %}
+            </li>
+            <li>Testimonial: 
+
+                {% if yearlyStudent.testimonials %}
+                <span class="boolean"> Right</span>
+            {% else %}
+            <span class="boolean"> Wrong</span>
+            {% endif %}
+            </li>
+     </ul>
+     <button class="btn btn-primary w-100">Get Started</button>
+    </div>
+  </div>

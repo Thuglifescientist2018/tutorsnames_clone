@@ -1,0 +1,24 @@
+{% load static %}
+<nav id="navbar" class="navbar navbar-light bg-light">
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'images/Tutorsnameslogo.png' %}" alt="TutorsNamesLogo">
+        </div>
+        <div class="nav-menu">
+            <div class="two-group">
+                <div class="group1">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}">Home</a></li>
+                        <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                        <li><a href="{% url 'users' %}">Users</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="group2">
+                    <a class='btn border border-primary'>Log in</a>
+                    <a class="btn btn-primary" href="">Create Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

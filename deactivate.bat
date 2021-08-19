@@ -1,0 +1,1 @@
+cd tnvenv && cd Scripts && deactivate && cd .. && cd ..
