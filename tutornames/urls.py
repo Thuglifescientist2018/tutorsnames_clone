@@ -21,8 +21,6 @@ urlpatterns = [
     path('', HomePage.as_view(), name="homepage"),
     path('pricing/', include('pricing.urls')),
     path('contact/', include('contact.urls')),
-    path('users/', include('users.urls')),
-
     path('admin/', admin.site.urls),
 
 ]

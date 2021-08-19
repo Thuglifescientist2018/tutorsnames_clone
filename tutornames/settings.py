@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pricing',
-    'users',
+
     'contact',
     'ckeditor',
     'django_countries'
