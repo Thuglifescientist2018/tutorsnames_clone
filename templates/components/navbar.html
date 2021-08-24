@@ -15,8 +15,15 @@
                     </ul>
                 </div>
                 <div class="group2">
+                    {% if not user.is_authenticated %}
                     <a class='btn border border-primary'>Log in</a>
-                    <a class="btn btn-primary" href="">Create Profile</a>
+                    <a class="btn btn-primary" href="{% url 'signup' %}">Create Profile</a>
+                    {% elif user.is_authenticated %}
+                        <a class="btn btn-primary" href="{% url 'manage-profile' user.id %}" id="profile_name">Manage Profile 
+                        <img src="{{user.change_avatar.url}}" alt="User Profile Picture" height="50px", width="50px" style="border-radius: 50%;">
+                    </a>
+                       
+                    {% endif %} 
                 </div>
             </div>
         </div>

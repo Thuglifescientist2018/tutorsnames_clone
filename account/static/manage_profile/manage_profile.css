@@ -1,0 +1,146 @@
+#manage_profile {
+  max-height: auto;
+  min-height: 64vh;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1vw;
+  -ms-grid-columns: 20% 20% 60%;
+      grid-template-columns: 20% 20% 60%;
+  overflow-x: hidden;
+}
+
+#manage_profile #manage_menu {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+#manage_profile #manage_menu #manage_items {
+  padding: 0;
+  list-style: none;
+  padding: 1rem;
+}
+
+#manage_profile #manage_menu #manage_items a {
+  margin-left: 2%;
+}
+
+#manage_profile #manage_menu #manage_items .manage_item {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.active_item {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+}
+
+#user_avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#user_avatar img {
+  display: block;
+  height: 20vh;
+  width: 10vw;
+}
+
+#info {
+  height: 100%;
+  background: #deeefa;
+}
+
+#info .updateinfo_social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2vw;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.update_info_details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.info_details form label {
+  display: block;
+  margin: 1vh 0;
+}
+
+.info_details form input {
+  border: none;
+  padding: 1vh;
+  width: 90%;
+  outline: none;
+}
+
+.update_info_detail_1 {
+  width: 50%;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.update_info_detail_2 .preferences #p-items .p_item {
+  margin: 5vh 0;
+}
+
+.update_info_detail_2 .preferences #p-items .p_item .onoroff {
+  position: relative;
+}
+
+.update_info_detail_2 .preferences #p-items .p_item .onoroff .checkbox {
+  position: absolute;
+  top: 0.7vw;
+  left: 2vw;
+  z-index: -1;
+}
+
+.update_info_detail_2 .preferences #p-items .p_item .onoroff .button {
+  height: 40px;
+  width: 5vw;
+  border: 1px solid black;
+  border-radius: 50px;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+.update_info_detail_2 .preferences #p-items .p_item .onoroff .button .first {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background: steelblue;
+  color: white;
+  font-size: 12px;
+  padding: 0.75rem;
+  left: 0;
+}
+
+.update_info_detail_2 .preferences #p-items .p_item .onoroff .button .second {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background: white;
+  right: 0;
+}
+
+.info_details:first-child {
+  padding: 1rem;
+}
+
+.django-ckeditor-widget {
+  width: 100% !important;
+}
+
+#cke_id_about_me {
+  width: 100% !important;
+}
+/*# sourceMappingURL=manage_profile.css.map */

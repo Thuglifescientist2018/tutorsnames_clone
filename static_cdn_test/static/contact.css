@@ -1,0 +1,51 @@
+#contactform {
+  height: 55vh;
+}
+
+#contactform form .container {
+  position: relative;
+}
+
+#contactform form .container .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#contactform form .container .wrapper input,
+#contactform form .container .wrapper textarea {
+  outline: none;
+  border: 1px solid steelblue;
+}
+
+#contactform form .container .wrapper input {
+  display: block;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+#contactform form .container .wrapper textarea {
+  padding: 0.74rem 2rem;
+}
+
+#contactform form .container button {
+  position: relative;
+  left: 55%;
+}
+
+#contactform form .container .btn {
+  background: rgba(0, 0, 255, 0.1);
+  padding: 1rem 4vw;
+}
+
+#contactform form .container .btn:hover {
+  background: steelblue;
+  color: white;
+}
+/*# sourceMappingURL=contact.css.map */
