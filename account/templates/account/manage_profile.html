@@ -2,31 +2,34 @@
 {% block stylesheets %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'manage_profile/manage_profile.css' %}">
+{% block child_stylesheets %}
 
 {% endblock %}
-{% block content %}
+{% endblock %}
+{% block content %} 
 <section id="manage_profile">
     <div id="manage_menu">
         <ul id="manage_items">
             
-            <li class="{% if request.path == '/accounts/manage/1/' %}active_item{% endif %}"><a href=""><i class="fas fa-lock m-2"></i><span class="manage_item">My Profile</span></a></li>
-            <li><a href=""><i class="fas fa-dollar-sign m-2"></i> <span class="manage_item">Subscription</span> </a></li>
-            <li><a href=""><i class="fas fa-palette m-2"></i> <span class="manage_item">Layouts</span> </a></li>
-            <li><a href=""><i class="fas fa-font m-2"></i> <span class="manage_item">Fonts</span> </a></li>
-            <li><a href=""><i class="fas fa-cog m-2"></i> <span class="manage_item">Services</span> </a></li>
-            <li><a href=""><i class="fas fa-cogs m-2"></i> <span class="manage_item">Skills</span> </a></li>
-            <li><a href=""><i class="fas fa-book m-2"></i> <span class="manage_item">Experience</span> </a></li>
-            <li><a href=""><i class="far fa-comment m-2"></i> <span class="manage_item">Testimonial</span> </a></li>
-            <li><a href=""><i class="fas fa-address-card m-2"></i> <span class="manage_item">Portfolio</span> </a></li>
-            <li><a href=""><i class="fas fa-blog m-2"></i> <span class="manage_item">Blog</span> </a></li>
-            <li><a href=""><i class="fas fa-calendar-check m-2"></i> <span class="manage_item">Appointments</span> </a></li>
-            <li><a href=""><i class="far fa-envelope m-2"></i> <span class="manage_item">Contact Message</span> </a></li>
-            <li><a href=""><i class="fas fa-upload m-2"></i> <span class="manage_item">Upload CV</span> </a></li>
+            <li class="{% if request.path == '/accounts/manage/{{user.id}}/' %}active_item{% endif %}"><a href=""><i class="fas fa-lock m-2"></i><span class="manage_item">My Profile{{user.id}}</span></a></li>
+            <li><a href="{% url 'manage_subscription' %}"><i class="fas fa-dollar-sign m-2"></i> <span class="manage_item">Subscription</span> </a></li>
+            <li><a href="{% url 'layouts' %}"><i class="fas fa-palette m-2"></i> <span class="manage_item">Layouts</span> </a></li>
+            <li><a href="{% url 'fonts' user.id %}"><i class="fas fa-font m-2"></i> <span class="manage_item">Fonts</span> </a></li>
+            <li><a href="{% url 'services' %}"><i class="fas fa-cog m-2"></i> <span class="manage_item">Services</span> </a></li>
+            <li><a href="{% url 'skills' %}"><i class="fas fa-cogs m-2"></i> <span class="manage_item">Skills</span> </a></li>
+            <li><a href="{% url 'experience' %}"><i class="fas fa-book m-2"></i> <span class="manage_item">Experience</span> </a></li>
+            <li><a href="{% url 'testimonial' %}"><i class="far fa-comment m-2"></i> <span class="manage_item">Testimonial</span> </a></li>
+            <li><a href="{% url 'portfolio' %}"><i class="fas fa-address-card m-2"></i> <span class="manage_item">Portfolio</span> </a></li>
+            <li><a href="{% url 'blog' %}"><i class="fas fa-blog m-2"></i> <span class="manage_item">Blog</span> </a></li>
+            <li><a href="{% url 'appointments' %}"><i class="fas fa-calendar-check m-2"></i> <span class="manage_item">Appointments</span> </a></li>
+            <li><a href="{% url 'contact_messages' %}"><i class="far fa-envelope m-2"></i> <span class="manage_item">Contact Message</span> </a></li>
+            <li><a href="{% url 'upload_cv' %}"><i class="fas fa-upload m-2"></i> <span class="manage_item">Upload CV</span> </a></li>
             
-            <li><a href=""> <i class="fas fa-unlock m-2"></i><span class="manage_item">Change Password</span>  </a></li>
+            <li><a href="{% url 'change_password' %}"> <i class="fas fa-unlock m-2"></i><span class="manage_item">Change Password</span>  </a></li>
         </ul>
     </div>
-    <section id="user_avatar">
+    {% block manage_content %}
+    <section id="user_avatar" class="leftcard">
         <img src="{{user.change_avatar.url}}" alt="">
         <span class="d-block">{{user}}</span>
         <span class="d-block">Joined <span class="dateofjoin"></span></span>
@@ -52,8 +55,32 @@
             <form method="POST"> {% csrf_token %}
             <div class="update_info_details">
                 <div class="update_info_detail_1">
-                        {{form.as_p}}
+                        <p>
+                            <label for="id_full_name">Full Name</label>
+                            {{form.full_name}}
+                        </p>
+                        <p>
+                            <label for="id_designation">Designation</label>
+                            {{form.designation}}
+                        </p>
+                       
+                        <p>
+                            <label for="id_email">E-mail</label>
+                            {{form.email}}
+                        </p>
+                        <p>
+                            <label for="id_phone">Phone</label>
+                            {{form.phone}}
+                        </p>
+                        <p>
+                            <label for="id_about_me">About me</label>
+                            {{form.about_me}}
+                           
+                      
+                        </p>
+                       
                         {{form.media | safe}}
+                        
                    
 
                 </div>
@@ -63,7 +90,7 @@
                         <ul id="p-items">
                             <li class="p_item">Profile
                                  <div class="onoroff">
-                                <input type="checkbox" class="checkbox">
+                               {{form.profile_boolean}}
                                 <div class="button" id="profile_boolean_btn">
                                     <div class="first">
                                         <span class="status">Off</span>
@@ -75,7 +102,7 @@
                             </div></li>
                             <li class="p_item">Follow/Unfollow
                                 <div class="onoroff">
-                                    <input type="checkbox" class="checkbox">
+                                    {{form.follow_unfollow_boolean}}
                                     <div class="button" id="follow_unfollow_boolean_btn">
                                         <div class="first">
                                             <span class="status">Off</span>
@@ -88,7 +115,7 @@
                             </li>
                             <li class="p_item">Contact
                                 <div class="onoroff">
-                                    <input type="checkbox" class="checkbox">
+                                    {{form.contact_boolean}}
                                     <div class="button" id="contact_boolean_btn">
                                         <div class="first">
                                             <span class="status">Off</span>
@@ -101,7 +128,7 @@
                             </li>
                             <li class="p_item">Appointment
                                 <div class="onoroff">
-                                    <input type="checkbox" class="checkbox">
+                                    {{form.appointment_boolean}}
                                     <div class="button" id="appointment_boolean_btn">
                                         <div class="first">
                                             <span class="status">Off</span>
@@ -115,7 +142,7 @@
                             <li class="p_item">Skill
 
                                 <div class="onoroff">
-                                    <input type="checkbox" class="checkbox">
+                                    {{form.skill_boolean}}
                                     <div class="button" id="skill_boolean_btn">
                                         <div class="first">
                                             <span class="status">Off</span>
@@ -128,7 +155,7 @@
                             </li>
                             <li class="p_item">Service
                                 <div class="onoroff">
-                                    <input type="checkbox" class="checkbox">
+                                    {{form.service_boolean}}
                                     <div class="button" id="service_boolean_btn">
                                         <div class="first">
                                             <span class="status">Off</span>
@@ -141,7 +168,7 @@
                             </li>
                             <li class="p_item">Testimonial
                                 <div class="onoroff">
-                                    <input type="checkbox" class="checkbox">
+                                    {{form.testimonial_boolean}}
                                     <div class="button" id="testimonial_boolean_btn">
                                         <div class="first">
                                             <span class="status">Off</span>
@@ -162,7 +189,9 @@
         </div>
 
     </section>
+    {% endblock %}
 </section>
+
 
 
 {% endblock %}

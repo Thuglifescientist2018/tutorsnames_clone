@@ -1,0 +1,28 @@
+.cards {
+  text-align: center;
+  .card {
+    ul {
+      list-style: none;
+      li {
+        padding: 0.35rem;
+      }
+    }
+  }
+  .yearlyPlan,
+  .monthlyPlan {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.selectedPlan {
+  background-color: #0d6efd;
+  color: #fff;
+
+  outline: none;
+}
+.unselectedPlan {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #0d6efd;
+  outline: none;
+}

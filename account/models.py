@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import (AbstractUser)
+from django.forms import widgets
+from colorfield.fields import ColorField
 
 
 from django_countries.fields import CountryField
@@ -29,3 +31,30 @@ class User(AbstractUser):
     following = models.FloatField(blank=True, null=True)
     portfolio = models.IntegerField(blank=True, null=True)
     views = models.FloatField(blank=True, null=True)
+    # prefereneces
+    profile_boolean = models.BooleanField(blank=True, null=True, default=False)
+    follow_unfollow_boolean = models.BooleanField(
+        blank=True, null=True, default=False)
+    contact_boolean = models.BooleanField(blank=True, null=True, default=False)
+    appointment_boolean = models.BooleanField(
+        blank=True, null=True, default=False)
+    skill_boolean = models.BooleanField(blank=True, null=True, default=False)
+    service_boolean = models.BooleanField(blank=True, null=True, default=False)
+    testimonial_boolean = models.BooleanField(
+        blank=True, null=True, default=False)
+
+
+class Fonts(models.Model):
+    FONT_CHOICE = (
+        ('select_font', 'Select Font'),
+        ('tajawal', 'Tajawai'),
+    )
+    COLOR_CHOICES = [
+        ("#FFFFFF", "white"),
+        ("#000000", "black")
+    ]
+    user = models.ForeignKey(
+        User, on_delete=models.SET_NULL, default=1, null=True)
+    site_font = models.CharField(
+        max_length=255, blank=True, null=True, choices=FONT_CHOICE, default=1)
+    site_color = ColorField(default='#FF0000')

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'account',
     'contact',
     'ckeditor',
-    'django_countries'
+    'django_countries',
+    'colorfield'
 
 ]
 AUTH_USER_MODEL = 'account.User'

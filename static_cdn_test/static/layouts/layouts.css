@@ -1,0 +1,39 @@
+#manage_profile {
+  -ms-grid-columns: 20% 80% !important;
+      grid-template-columns: 20% 80% !important;
+}
+
+.active_layout {
+  border: 4px solid rgba(40, 167, 69, 0.5);
+}
+
+#layouts .items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  min-height: 50vh;
+}
+
+#layouts .items .layout {
+  height: 200px;
+  width: 200px;
+  background: black;
+}
+
+#fonts_and_colors {
+  min-height: 30vh;
+}
+
+#fonts_and_colors input,
+#fonts_and_colors select {
+  padding: 1rem;
+  width: 100%;
+  outline: none;
+}
+/*# sourceMappingURL=layouts.css.map */
