@@ -4,10 +4,10 @@ from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView
 from django.views.generic import UpdateView, TemplateView
-from .models import User, Fonts
+from .models import (User, Fonts)
 from django import forms
 from django.shortcuts import get_object_or_404
-from .forms import ManageProfileForm, ManageFontsForm
+from .forms import ManageProfileForm, ManageFontsForm, ManageUploadCVForm
 from pricing.models import MonthlyStudent, MonthlyTutor, MonthlyPro, YearlyStudent, YearlyTutor, YearlyPro
 # Create your views here.
 
@@ -79,7 +79,7 @@ class FontsManage(UpdateView):
             Fonts.objects.create(user=User, site_font=1, site_color="#fff")
 
 
-class Services(TemplateView):
+class Services(CreateView):
     template_name = 'account/sidebar/services.html'
 
 
