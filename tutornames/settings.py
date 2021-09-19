@@ -38,13 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pricing',
-
+    'account',
     'contact',
     'ckeditor',
-    'django_countries'
+    'django_countries',
+    'colorfield'
 
 ]
-
+AUTH_USER_MODEL = 'account.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -135,3 +136,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOCAL_STATIC_CDN_PATH = os.path.join(BASE_DIR, "static_cdn_test")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, "static")
+MEDIA_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, "media")
+MEDIA_URL = '/media/'

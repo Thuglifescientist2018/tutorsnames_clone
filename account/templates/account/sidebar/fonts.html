@@ -1,0 +1,16 @@
+{% extends 'account/manage_profile.html' %}
+{% block child_stylesheets %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'sidebar/fonts/fonts.css' %}">
+{% endblock %}
+{% block manage_content %}
+<section id="set_font_and_colors" class="card">
+    <h2>Set Fonts & Colors</h2>
+    <form>
+        <label for="site_font">Site Font</label>
+        {{form.site_font}}
+        <label for="site_color">Site Color</label>
+        {{form.site_color}}
+    </form>
+</section>
+{% endblock %}

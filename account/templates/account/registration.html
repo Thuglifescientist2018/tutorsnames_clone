@@ -1,0 +1,26 @@
+{% extends 'index.html' %} 
+{% block stylesheets %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'signup.css' %}">
+{% endblock %}
+{% block content %}
+
+
+
+<form id="signupform" method="POST"> {% csrf_token %}
+<div class="container">
+    
+    <div class="fields">
+        {{form.as_p}}
+
+    </div>
+    <div class="agreement">
+        <span><input type="checkbox" required> I have read the <a href="">terms and conditions</a> and accept them</span>
+
+    </div>
+    <button class="btn btn-primary d-block">Create  </button>
+</div>
+
+</form>
+
+{% endblock %}

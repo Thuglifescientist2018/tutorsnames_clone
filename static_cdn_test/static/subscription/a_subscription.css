@@ -1,0 +1,34 @@
+.cards {
+  text-align: center;
+}
+
+.cards .card ul {
+  list-style: none;
+}
+
+.cards .card ul li {
+  padding: 0.35rem;
+}
+
+.cards .yearlyPlan,
+.cards .monthlyPlan {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.selectedPlan {
+  background-color: #0d6efd;
+  color: #fff;
+  outline: none;
+}
+
+.unselectedPlan {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #0d6efd;
+  outline: none;
+}
+/*# sourceMappingURL=a_subscription.css.map */

@@ -1,0 +1,57 @@
+#signupform {
+  padding: 10vh 0;
+}
+
+#signupform .container .helptext {
+  display: none;
+}
+
+#signupform .container .helptext .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#signupform .container .fields {
+  margin-left: 30vh;
+}
+
+#signupform .container .fields label {
+  display: none;
+}
+
+#signupform .container .fields input,
+#signupform .container .fields select {
+  padding: 0.75rem;
+  width: 65%;
+  border: none;
+  -webkit-box-shadow: 1px 1px 5px grey;
+          box-shadow: 1px 1px 5px grey;
+  outline: none;
+}
+
+#signupform .container .agreement,
+#signupform .container .btn-primary {
+  margin-left: 30vh;
+  padding: 1rem 10vw;
+}
+
+#signupform .container .agreement a {
+  color: red;
+}
+
+#signupform .container .btn-primary {
+  margin: 0 auto;
+  background: rgba(40, 110, 251, 0.1);
+  border: none;
+  color: black;
+}
+
+#signupform .container .btn-primary:hover {
+  background: #298bdb;
+  color: white;
+}
+/*# sourceMappingURL=signup.css.map */

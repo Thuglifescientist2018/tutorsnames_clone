@@ -1,0 +1,48 @@
+{% extends 'account/manage_profile.html' %}
+{% block child_stylesheets %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'layouts/layouts.css' %}">
+{% endblock %}
+{% block manage_content %}
+<section id="layoutandfonts">
+    
+    <div id="layouts">
+        <h5 class='p-2'>Choose Layouts</h5>
+        <div class="items">
+            <div class="layout active_layout"></div>
+            <div class="layout"></div>
+            <div class="layout"></div>
+            <div class="layout"></div>
+            <div class="layout"></div>
+    
+        </div>
+        
+    </div>
+    <div id="fonts_and_colors">
+        <h4>Choose Fonts & Colors</h4>
+        <div class="input_fields">
+            <div class="container">
+                <form>
+                    <p>
+                        <label for="select_font">Select Font</label>
+                        <select id="select_font">
+                            <option value="1">Tajawal</option>
+                            <option value="2">Sriracha</option>
+                            <option value="3">Alata</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="select_color">
+                            Select Color
+                        </label>
+                        <input type="text" id="select_color">
+                        <button class="btn btn-primary m-2" type="submit">✔ Save Changes</button>
+                    </p>
+                </form>
+ 
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

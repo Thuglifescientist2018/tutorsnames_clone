@@ -1,0 +1,40 @@
+{% extends 'account/manage_profile.html' %}
+{% block child_stylesheets %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'subscription/a_subscription.css' %}">
+{% endblock %}
+
+
+{% block manage_content %}
+<div id="subscription" class="leftcard">
+    <h2>Subscription</h2>
+    <p>Subscription: Plan</p>
+    <p>Price: <span class="subs_price">0.00</span>$</p>
+    <p>Billing Frequency: <span class="subscription_plan">Yearly</span></p>
+    <p>Last Billing: <span class="last_billing">26 Aug 2021</span></p>
+    <p>Expire: <span class="expiry_date">26 Aug 2022</span><span class="expirydays_left"></span></p>
+    <div class="btn btn-success">Payment Status: <span class="verified_or_not">✔</span></div>
+</div>
+<div class="cards">
+    <button class="btn border border-primary">Monthly</button>
+    <button class="btn btn-primary">Yearly</button>
+    <div class="yearlyPlan">
+        {% include 'account/cards/yearly/yearlystudent.html' %}
+        {% include 'account/cards/yearly/yearlytutor.html' %}
+        {% include 'account/cards/yearly/yearlypro.html' %}
+    </div>
+    <div class="monthlyPlan">
+        {% include 'account/cards/monthly/monthlystudent.html' %}
+        {% include 'account/cards/monthly/monthlytutor.html' %}
+        {% include 'account/cards/monthly/monthlypro.html' %}
+    </div>
+
+</div>
+
+{% endblock %}
+{% block scripts %}
+{% load static %}
+
+<script src="{% static 'subscription/subscriptioncost.js' %} "></script>
+
+{% endblock %}

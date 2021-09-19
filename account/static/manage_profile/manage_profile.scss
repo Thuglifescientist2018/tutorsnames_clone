@@ -1,0 +1,139 @@
+#manage_profile {
+  max-height: auto;
+  min-height: 64vh;
+  display: grid;
+  grid-gap: 1vw;
+  grid-template-columns: 20% 20% 60%;
+  overflow-x: hidden;
+
+  #manage_menu {
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+
+    #manage_items {
+      padding: 0;
+      list-style: none;
+      padding: 1rem;
+
+      a {
+        margin-left: 2%;
+      }
+      .manage_item {
+        font-weight: bold;
+        display: inline-block;
+      }
+    }
+  }
+}
+.active_item {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+}
+.leftcard {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  background: #fff;
+  padding: 1rem;
+}
+#user_avatar {
+  display: flex;
+
+  flex-direction: column;
+  img {
+    display: block;
+    height: 20vh;
+    width: 10vw;
+  }
+}
+
+#info {
+  height: 100%;
+
+  background: #deeefa;
+}
+#info .updateinfo_social {
+  display: flex;
+  gap: 2vw;
+  font-size: 14px;
+  font-weight: bold;
+}
+.update_info_details {
+  display: flex;
+}
+
+.info_details {
+  form {
+    label {
+      display: block;
+      margin: 1vh 0;
+    }
+    input {
+      border: none;
+      padding: 1vh;
+      width: 90%;
+      outline: none;
+    }
+  }
+}
+.update_info_detail_1 {
+  width: 50%;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.update_info_detail_2 {
+  .preferences {
+    #p-items {
+      .p_item {
+        margin: 5vh 0;
+        .onoroff {
+          position: relative;
+          select {
+            position: absolute;
+            top: 0.7vw;
+            left: 2vw;
+            visibility: hidden;
+          }
+          .button {
+            height: 40px;
+            width: 5vw;
+            border: 1px solid black;
+            border-radius: 50px;
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+
+            .first {
+              position: absolute;
+              height: 100%;
+              width: 50%;
+              background: steelblue;
+              color: white;
+              font-size: 12px;
+              padding: 0.75rem;
+              left: 0;
+            }
+            .second {
+              position: absolute;
+              height: 100%;
+              width: 50%;
+              background: white;
+              right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.info_details:first-child {
+  padding: 1rem;
+}
+
+.django-ckeditor-widget {
+  width: 100% !important;
+}
+#cke_id_about_me {
+  width: 100% !important;
+}

@@ -1,0 +1,39 @@
+#contactform {
+  height: 55vh;
+  form {
+    .container {
+      position: relative;
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        input,
+        textarea {
+          outline: none;
+          border: 1px solid steelblue;
+        }
+        input {
+          display: block;
+          padding: 0.75rem;
+          margin: 0.75rem 0;
+        }
+        textarea {
+          padding: 0.74rem 2rem;
+        }
+      }
+      button {
+        position: relative;
+        left: 55%;
+      }
+      .btn {
+        background: rgba(0, 0, 255, 0.1);
+        padding: 1rem 4vw;
+        &:hover {
+          background: steelblue;
+          color: white;
+        }
+      }
+    }
+  }
+}

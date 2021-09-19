@@ -1,0 +1,82 @@
+.card .btn-primary {
+  background: rgba(40, 110, 251, 0.1);
+  color: #000;
+}
+
+.card .btn-primary:hover {
+  background: steelblue;
+  color: white;
+}
+
+.selectedPlan {
+  background-color: #0d6efd;
+  color: #fff;
+  border: 2px solid #0d6efd;
+}
+
+.unselectedPlan {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #0d6efd;
+}
+
+#explore_pricing {
+  text-align: center;
+}
+
+#explore_pricing h2 {
+  padding: 1rem 0;
+}
+
+#explore_pricing .plan {
+  padding-bottom: 2rem;
+}
+
+#explore_pricing .plan .border-primary {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#explore_pricing .plan .btn-primary {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#explore_pricing .plan .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.customers {
+  padding: 2rem;
+}
+
+.customers .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.customers .container .monthlyPlan,
+.customers .container .yearlyPlan {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
+}
+/*# sourceMappingURL=pricing.css.map */
