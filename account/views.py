@@ -3,11 +3,14 @@ from django.http import request
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView
-from django.views.generic import UpdateView, TemplateView
-from .models import (User, Fonts)
+from django.views.generic import UpdateView, TemplateView, ListView
+from .models import (ManageSkills, User, Fonts, ManageServices, ManageSkills, ManageExperience,
+                     ManageTestimonial, ManagePortfolio, ManageBlog, ManageAppointments, ManageUploadCV)
 from django import forms
-from django.shortcuts import get_object_or_404
-from .forms import ManageProfileForm, ManageFontsForm, ManageUploadCVForm
+from django.shortcuts import get_object_or_404, redirect
+from .forms import (ManageProfileForm, ManageFontsForm, ManageServicesForm, ManageSkillsForm, ManageExperienceForm,
+                    ManageTestimonialForm, ManagePortfolioForm, ManageBlogForm, ManageAppointmentsForm, ManageUploadCVForm, ManageChangePasswordForm
+                    )
 from pricing.models import MonthlyStudent, MonthlyTutor, MonthlyPro, YearlyStudent, YearlyTutor, YearlyPro
 # Create your views here.
 
@@ -79,41 +82,65 @@ class FontsManage(UpdateView):
             Fonts.objects.create(user=User, site_font=1, site_color="#fff")
 
 
+# users upload multiple services.
+
 class Services(CreateView):
+    form_class = ManageServicesForm
     template_name = 'account/sidebar/services.html'
 
+    def get_object(self):
+        id_ = ManageServices.objects.all().last().id
+        if id_:
+            return get_object_or_404(ManageServices, id=id_)
+        elif not id_:
+            queryset = ManageSkills
 
-class Skills(TemplateView):
+
+class Skills(CreateView):
+    form_class = ManageSkillsForm
     template_name = 'account/sidebar/skills.html'
+    success_url = reverse_lazy("skills")
 
 
-class Experience(TemplateView):
+class Experience(UpdateView):
+    form_class = ManageExperienceForm
+
+    def get_object(self):
+        id_ = ManageSkills  .objects.all().last().id
+        if id_:
+            return get_object_or_404(ManageSkills, id=id_)
     template_name = 'account/sidebar/experience.html'
 
 
-class Testimonial(TemplateView):
+class Testimonial(UpdateView):
+    form_class = ManageTestimonialForm
     template_name = 'account/sidebar/testimonial.html'
 
 
-class Portfolio(TemplateView):
+class Portfolio(UpdateView):
+    form_class = ManageProfileForm
     template_name = 'account/sidebar/portfolio.html'
 
 
-class Blog(TemplateView):
+class Blog(UpdateView):
+    form_class = ManageBlogForm
     template_name = 'account/sidebar/blog.html'
 
 
-class Appointments(TemplateView):
+class Appointments(UpdateView):
+    form_class = ManageAppointmentsForm
     template_name = 'account/sidebar/appointments.html'
 
 
-class ContactMessages(TemplateView):
+class ContactMessages(ListView):
     template_name = 'account/sidebar/contact_messages.html'
 
 
-class UploadCV(TemplateView):
+class UploadCV(UpdateView):
+    form_class = ManageUploadCVForm
     template_name = 'account/sidebar/upload_cv.html'
 
 
-class ChangePassword(TemplateView):
+class ChangePassword(UpdateView):
+    form_class = ManageChangePasswordForm
     template_name = 'account/sidebar/change_password.html'

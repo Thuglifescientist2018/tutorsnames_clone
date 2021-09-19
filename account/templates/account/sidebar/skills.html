@@ -1,5 +1,99 @@
 {% extends 'account/manage_profile.html' %}
-
+{% block child_stylesheets %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'sidebar/skills/skills.css' %}">
+{% endblock %}
 {% block manage_content %}
-<h1>Skills</h1>
+<section id="skills_and_subskills">
+    <form method="POST"> {% csrf_token %}
+    <section id="add_skills">
+        <h3>Add Skills</h3>
+            <label for="id_skill_name">Skill Name <span style="color:red">*</span> </label>
+            {{form.skill_name}}
+            <label for="id_order">Order</label>
+            {{form.order}}
+          <section id="show_skills">
+
+             <table class="skill_list">
+                <tr id="ui_settings">
+                    <td class="border-0">
+                        show <select>
+                            <option value="ten">10</option>
+                        </select>
+                        
+                    </td>
+                    <td class="border-0">
+                        <input style="outline: none; padding: 5px;" type="search" id="searchskills" placeholder="Search Skills">
+                    </td>
+                </tr>
+                 <tr id="header_info">
+                     <th># </th>
+                     <th>Name</th>
+                     <th>Status</th>
+                     <th>Order</th>
+                     <th>Action </th>
+                 </tr>
+                 <tr>
+                     <td>1</td>
+                     <td>Shashwat</td>
+                     <td>active</td>
+                     <td>0</td>
+                     <td    >
+                         <i class="fa fa-pencil-alt"></i>
+                         <i class="fa fa-trash"></i>
+                         <i class="fa fa-window-close"></i>
+                     </td>
+                 </tr>
+             </table>
+          </section>
+        </section>
+        <div id="add_sub_skills">
+            <h3>Add Sub Skills</h3>
+            <label for="id_skills">Skills <span style="color:red">*</span></label>
+            {{form.skills}}
+            <label for="id_sub_skill_name">Sub Skill Name <span style="color:red">*</span></label>
+            {{form.sub_skill_name}}
+            <label for="id_sub_skill_level">Sub Skill Level<span style="color:red">*</span></label>
+            {{form.sub_skill_level}}
+            <label for="id_sub_order">Sub Order <span style="color:red">*</span></label>
+            {{form.sub_order}}
+            <button type="submit" class="btn btn-save">Save</button>
+            <table class="skill_list">
+                <tr id="ui_settings">
+                    <td class="border-0">
+                        show <select>
+                            <option value="ten">10</option>
+                        </select>
+                        
+                    </td>
+                    <td class="border-0">
+                        <input style="outline: none; padding: 5px;" type="search" id="searchskills" placeholder="Search Skills">
+                    </td>
+                </tr>
+                 <tr id="header_info">
+                     <th># </th>
+                     <th>Name</th>
+                     <th>Status</th>
+                     <th>Order</th>
+                     <th>Action </th>
+                 </tr>
+                 <tr>
+                     <td>1</td>
+                     <td>Shashwat</td>
+                     <td>active</td>
+                     <td>0</td>
+                     <td    >
+                         <i class="fa fa-pencil-alt"></i>
+                         <i class="fa fa-trash"></i>
+                         <i class="fa fa-window-close"></i>
+                     </td>
+                 </tr>
+             </table>
+        </div>
+    </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'sidebar/skills/accountskills.js' %}"></script>
 {% endblock %}

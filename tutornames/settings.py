@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'account',
     'contact',
     'ckeditor',
+    'api',
+    'rest_framework',
     'django_countries',
     'colorfield'
 

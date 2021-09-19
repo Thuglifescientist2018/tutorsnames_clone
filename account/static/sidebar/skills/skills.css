@@ -1,0 +1,78 @@
+#manage_profile {
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+}
+
+.btn-save {
+  background: teal;
+  color: white;
+}
+
+#skills_and_subskills {
+  width: 100%;
+}
+
+#skills_and_subskills form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#skills_and_subskills form input[type="text"],
+#skills_and_subskills form input[type="number"],
+#skills_and_subskills form select {
+  width: 80%;
+  padding: 10px;
+  margin: 1vh 0;
+  border: 3px solid #dee7e7;
+  outline: none;
+}
+
+#skills_and_subskills form label,
+#skills_and_subskills form select {
+  display: block;
+}
+
+#skills_and_subskills form #add_skills,
+#skills_and_subskills form #add_sub_skills {
+  background: white;
+  padding: 1rem;
+}
+
+#skills_and_subskills form #add_skills,
+#skills_and_subskills form #add_sub_skills {
+  margin: 0 1rem;
+}
+
+#skills_and_subskills form #add_skills {
+  width: 50%;
+}
+
+#skills_and_subskills form #add_skills #show_skills {
+  text-align: center;
+}
+
+#skills_and_subskills form #add_skills #show_skills .skill_list {
+  width: 100%;
+  margin: 5% 0;
+}
+
+#skills_and_subskills form #add_skills #show_skills .skill_list #ui_settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#skills_and_subskills form #add_skills #show_skills .skill_list th,
+#skills_and_subskills form #add_skills #show_skills .skill_list td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+#skills_and_subskills form #add_sub_skills {
+  width: 50%;
+}
+/*# sourceMappingURL=skills.css.map */
