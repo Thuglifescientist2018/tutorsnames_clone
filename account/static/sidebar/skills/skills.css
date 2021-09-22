@@ -3,8 +3,19 @@
       grid-template-columns: 20% 80%;
 }
 
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
 .btn-save {
   background: teal;
+  color: white;
+}
+
+.btn-inactive {
+  background: darkred;
   color: white;
 }
 
@@ -64,12 +75,6 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-#skills_and_subskills form #add_skills #show_skills .skill_list th,
-#skills_and_subskills form #add_skills #show_skills .skill_list td {
-  border: 1px solid black;
-  padding: 10px;
 }
 
 #skills_and_subskills form #add_sub_skills {

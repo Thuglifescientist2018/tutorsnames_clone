@@ -84,6 +84,7 @@ class ManageSkills(models.Model):
     ]
     skill_name = models.CharField(blank=False, null=True, max_length=255)
     order = models.IntegerField(blank=True, null=True)
+    skill_status = models.BooleanField(blank=True, null=False, default=True)
     service_details = models.TextField(blank=True, null=True)
     skills = models.CharField(blank=False, null=True,
                               choices=SKILLS_CHOICES, max_length=255)
@@ -91,6 +92,8 @@ class ManageSkills(models.Model):
     sub_skill_level = models.CharField(
         blank=False, null=True, choices=SUB_SKILL_LEVELS, max_length=255)
     sub_order = models.IntegerField(blank=True, null=True)
+    sub_skill_status = models.BooleanField(
+        blank=True, null=False, default=True)
 
 
 class ManageExperience(models.Model):

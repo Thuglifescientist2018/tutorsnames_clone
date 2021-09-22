@@ -1,11 +1,23 @@
 #manage_profile {
   grid-template-columns: 20% 80%;
 }
+
+// Common tags settings
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+}
 // utility classes
 .btn-save {
   background: teal;
   color: white;
 }
+.btn-inactive {
+  background: darkred;
+  color: white;
+}
+
 #skills_and_subskills {
   width: 100%;
   form {
@@ -43,11 +55,6 @@
           #ui_settings {
             display: flex;
             justify-content: space-between;
-          }
-          th,
-          td {
-            border: 1px solid black;
-            padding: 10px;
           }
         }
       }
