@@ -1,14 +1,3 @@
-#manage_profile {
-  -ms-grid-columns: 20% 80%;
-      grid-template-columns: 20% 80%;
-}
-
-th,
-td {
-  border: 1px solid black;
-  padding: 10px;
-}
-
 .btn-save {
   background: teal;
   color: white;
@@ -19,65 +8,48 @@ td {
   color: white;
 }
 
+.btn-active {
+  background: steelblue;
+  color: white;
+}
+
 #skills_and_subskills {
-  width: 100%;
-}
-
-#skills_and_subskills form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#skills_and_subskills form input[type="text"],
-#skills_and_subskills form input[type="number"],
-#skills_and_subskills form select {
-  width: 80%;
-  padding: 10px;
-  margin: 1vh 0;
-  border: 3px solid #dee7e7;
-  outline: none;
-}
-
-#skills_and_subskills form label,
-#skills_and_subskills form select {
-  display: block;
-}
-
-#skills_and_subskills form #add_skills,
-#skills_and_subskills form #add_sub_skills {
+#skills_and_subskills #add_skills,
+#skills_and_subskills #add_sub_skills {
+  padding: 1vh 2vw;
   background: white;
-  padding: 1rem;
+  margin: 1vw;
 }
 
-#skills_and_subskills form #add_skills,
-#skills_and_subskills form #add_sub_skills {
-  margin: 0 1rem;
-}
-
-#skills_and_subskills form #add_skills {
-  width: 50%;
-}
-
-#skills_and_subskills form #add_skills #show_skills {
-  text-align: center;
-}
-
-#skills_and_subskills form #add_skills #show_skills .skill_list {
+#skills_and_subskills #add_skills input,
+#skills_and_subskills #add_skills select,
+#skills_and_subskills #add_sub_skills input,
+#skills_and_subskills #add_sub_skills select {
+  padding: 10px;
+  margin: 10px;
   width: 100%;
-  margin: 5% 0;
 }
 
-#skills_and_subskills form #add_skills #show_skills .skill_list #ui_settings {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+#skills_and_subskills #add_skills .ui_settings .showselectbox select,
+#skills_and_subskills #add_sub_skills .ui_settings .showselectbox select {
+  padding: 5px 50px;
 }
 
-#skills_and_subskills form #add_sub_skills {
-  width: 50%;
+#skills_and_subskills #add_skills .searchskills,
+#skills_and_subskills #add_sub_skills .searchskills {
+  width: 20vh;
+}
+
+#skills_and_subskills #add_skills .skill_list th,
+#skills_and_subskills #add_skills .skill_list td,
+#skills_and_subskills #add_sub_skills .skill_list th,
+#skills_and_subskills #add_sub_skills .skill_list td {
+  border: 1px solid black;
+  padding: 10px;
 }
 /*# sourceMappingURL=skills.css.map */

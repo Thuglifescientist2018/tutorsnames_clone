@@ -4,8 +4,8 @@ from django.db.models import fields
 from django.db.models.base import Model
 from django.forms import ModelForm
 from account.models import User
-from .models import (Fonts,
-                     ManageServices, ManageSkills, ManageExperience, ManageTestimonial, ManagePortfolio,
+from .models import (Fonts, ManageAddSkills, ManageAddSubSkills,
+                     ManageServices, ManageExperience, ManageTestimonial, ManagePortfolio,
                      ManageBlog, ManageAppointments, ManageUploadCV, ManageChangePassword
                      )
 
@@ -30,9 +30,15 @@ class ManageServicesForm(ModelForm):
         fields = "__all__"
 
 
-class ManageSkillsForm(ModelForm):
+class ManageAddSkillsForm(ModelForm):
     class Meta:
-        model = ManageSkills
+        model = ManageAddSkills
+        fields = "__all__"
+
+
+class ManageAddSubSkillsForm(ModelForm):
+    class Meta:
+        model = ManageAddSubSkills
         fields = "__all__"
 
 

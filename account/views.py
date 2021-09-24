@@ -4,11 +4,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView
 from django.views.generic import UpdateView, TemplateView, ListView
-from .models import (ManageSkills, User, Fonts, ManageServices, ManageSkills, ManageExperience,
+from .models import (User, Fonts, ManageServices,  ManageExperience,
                      ManageTestimonial, ManagePortfolio, ManageBlog, ManageAppointments, ManageUploadCV)
 from django import forms
-from django.shortcuts import get_object_or_404, redirect
-from .forms import (ManageProfileForm, ManageFontsForm, ManageServicesForm, ManageSkillsForm, ManageExperienceForm,
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import (ManageAddSubSkillsForm, ManageProfileForm, ManageFontsForm, ManageServicesForm, ManageAddSkillsForm, ManageExperienceForm,
                     ManageTestimonialForm, ManagePortfolioForm, ManageBlogForm, ManageAppointmentsForm, ManageUploadCVForm, ManageChangePasswordForm
                     )
 from pricing.models import MonthlyStudent, MonthlyTutor, MonthlyPro, YearlyStudent, YearlyTutor, YearlyPro
@@ -96,10 +96,20 @@ class Services(CreateView):
             queryset = ManageSkills
 
 
-class Skills(CreateView):
-    form_class = ManageSkillsForm
+def Skills(request):
     template_name = 'account/sidebar/skills.html'
-    success_url = reverse_lazy("skills")
+    form = ManageAddSkillsForm(request.POST or None)
+    form2 = ManageAddSubSkillsForm(request.POST or None)
+    if form2.is_valid():
+        form2.save()
+
+    if form.is_valid():
+        form.save()
+    context = {
+        "form": form,
+        "form2": form2
+    }
+    return render(request, template_name, context)
 
 
 class Experience(UpdateView):

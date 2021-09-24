@@ -66,10 +66,20 @@ class ManageServices(models.Model):
     service_details = models.TextField(blank=True, null=True)
 
 
-class ManageSkills(models.Model):
+class ManageAddSkills(models.Model):
     SKILLS_CHOICES = [
         ("Select_skills", "Select Skill"),
     ]
+
+    skill_name = models.CharField(blank=False, null=True, max_length=255)
+    order = models.IntegerField(blank=True, null=True)
+    skill_status = models.BooleanField(blank=True, null=False, default=True)
+
+    def __str__(self):
+        return self.skill_name
+
+
+class ManageAddSubSkills(models.Model):
     SUB_SKILL_LEVELS = [
         ("ten_percent", "10%"),
         ("twenty_percent", "20%"),
@@ -82,12 +92,10 @@ class ManageSkills(models.Model):
         ("ninety_percent", "90%"),
         ("hundred_percent", "100%"),
     ]
-    skill_name = models.CharField(blank=False, null=True, max_length=255)
-    order = models.IntegerField(blank=True, null=True)
     skill_status = models.BooleanField(blank=True, null=False, default=True)
     service_details = models.TextField(blank=True, null=True)
-    skills = models.CharField(blank=False, null=True,
-                              choices=SKILLS_CHOICES, max_length=255)
+    skills = models.ForeignKey(
+        ManageAddSkills,  on_delete=models.SET_NULL, null=True, blank=False, default=1)
     sub_skill_name = models.CharField(blank=False, null=True, max_length=255)
     sub_skill_level = models.CharField(
         blank=False, null=True, choices=SUB_SKILL_LEVELS, max_length=255)

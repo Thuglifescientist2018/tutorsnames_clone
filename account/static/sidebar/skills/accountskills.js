@@ -1,8 +1,7 @@
 function fetchSkills() {
     fetch('http://127.0.0.1:8000/api/accountskills/').then(response => response.json()).then(infos => {
         addSkillsUIData(infos);
-        addSubSkillsUIData(infos);
-
+    
 
     });
 
@@ -16,7 +15,7 @@ function addSkillsUIData(infos) {
         <tr>
         <td>${info.id}</td>
         <td>${info.skill_name}</td>
-        <td><button class="status btn ${info.skill_status ? 'btn-save' : 'btn-inactive'}">${info.skill_status ? 'Active' : 'Inactive'}</button></td>
+        <td><button class="status btn ${info.skill_status ? 'btn-active' : 'btn-inactive'}">${info.skill_status ? 'Active' : 'Inactive'}</button></td>
         <td>${info.order}</td>
         <td>
             <i class="fa fa-pencil-alt"></i>
@@ -29,7 +28,15 @@ function addSkillsUIData(infos) {
 
 
 }
+function fetchSubSkills() {
+    fetch('http://127.0.0.1:8000/api/accountsubskills/').then(response => response.json()).then(infos => {
+        addSubSkillsUIData(infos)
+    
 
+    });
+
+}
+fetchSubSkills()
 function addSubSkillsUIData(infos) {
     let sub_skills_data = document.getElementById('sub_skills_data');
     infos.forEach(function (info) {
@@ -37,7 +44,7 @@ function addSubSkillsUIData(infos) {
        <tr>
        <td>${info.id}</td>
        <td>${info.sub_skill_name}</td>
-       <td><button class="status btn ${info.sub_skill_status ? 'btn-save' : 'btn-inactive'}">${info.sub_skill_status ? 'Active' : 'Inactive'}</button></td>
+       <td><button class="status btn ${info.sub_skill_status ? 'btn-active' : 'btn-inactive'}">${info.sub_skill_status ? 'Active' : 'Inactive'}</button></td>
        <td>${info.sub_order}</td>
        <td>
            <i class="fa fa-pencil-alt"></i>

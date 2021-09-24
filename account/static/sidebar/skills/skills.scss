@@ -1,14 +1,4 @@
-#manage_profile {
-  grid-template-columns: 20% 80%;
-}
-
-// Common tags settings
-th,
-td {
-  border: 1px solid black;
-  padding: 10px;
-}
-// utility classes
+// Utility classes
 .btn-save {
   background: teal;
   color: white;
@@ -17,50 +7,41 @@ td {
   background: darkred;
   color: white;
 }
-
+.btn-active {
+  background: steelblue;
+  color: white;
+}
 #skills_and_subskills {
-  width: 100%;
-  form {
-    display: flex;
+  display: flex;
 
-    input[type="text"],
-    input[type="number"],
+  #add_skills,
+  #add_sub_skills {
+    padding: 1vh 2vw;
+    background: white;
+    margin: 1vw;
+
+    input,
     select {
-      width: 80%;
       padding: 10px;
-      margin: 1vh 0;
-      border: 3px solid #dee7e7;
-      outline: none;
+      margin: 10px;
+      width: 100%;
     }
-    label,
-    select {
-      display: block;
-    }
-    #add_skills,
-    #add_sub_skills {
-      background: white;
-      padding: 1rem;
-    }
-    #add_skills,
-    #add_sub_skills {
-      margin: 0 1rem;
-    }
-    #add_skills {
-      width: 50%;
-      #show_skills {
-        text-align: center;
-        .skill_list {
-          width: 100%;
-          margin: 5% 0;
-          #ui_settings {
-            display: flex;
-            justify-content: space-between;
-          }
+    .ui_settings {
+      .showselectbox {
+        select {
+          padding: 5px 50px;
         }
       }
     }
-    #add_sub_skills {
-      width: 50%;
+    .searchskills {
+      width: 20vh;
+    }
+    .skill_list {
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px;
+      }
     }
   }
 }

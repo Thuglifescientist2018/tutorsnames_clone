@@ -5,28 +5,31 @@
 {% endblock %}
 {% block manage_content %}
 <section id="skills_and_subskills">
-    <form method="POST"> {% csrf_token %}
     <section id="add_skills">
         <h3>Add Skills</h3>
+        <form method="POST"> {% csrf_token %} 
             <label for="id_skill_name">Skill Name <span style="color:red">*</span> </label>
             {{form.skill_name}}
             <label for="id_order">Order</label>
             {{form.order}}
+            <button type="submit" class="btn btn-save">Save Skill</button>
+        </form>
+
           <section id="show_skills">
 
              <table class="skill_list">
                  <thead>
 
                 
-                <tr id="ui_settings">
-                    <td class="border-0">
+                <tr class="ui_settings">
+                    <td class="border-0 showselectbox">
                         show <select>
                             <option value="ten">10</option>
                         </select>
                         
                     </td>
-                    <td class="border-0">
-                        <input style="outline: none; padding: 5px;" type="search" id="searchskills" placeholder="Search Skills">
+                    <td id="searchskillscell" class="border-0">
+                        <input style="outline: none; padding: 5px;" type="search" class="searchskills" placeholder="Search Skills">
                     </td>
                 </tr>
                  <tr id="header_info">
@@ -45,47 +48,52 @@
              </table>
           </section>
         </section>
-        <div id="add_sub_skills">
+        
+        
+        <section id="add_sub_skills">
             <h3>Add Sub Skills</h3>
-            <label for="id_skills">Skills <span style="color:red">*</span></label>
-            {{form.skills}}
-            <label for="id_sub_skill_name">Sub Skill Name <span style="color:red">*</span></label>
-            {{form.sub_skill_name}}
-            <label for="id_sub_skill_level">Sub Skill Level<span style="color:red">*</span></label>
-            {{form.sub_skill_level}}
-            <label for="id_sub_order">Sub Order <span style="color:red">*</span></label>
-            {{form.sub_order}}
-            <button type="submit" class="btn btn-save">Save</button>
-            <table class="skill_list">
-                <thead>
-
-               
-                <tr id="ui_settings">
-                    <td class="border-0">
-                        show <select>
-                            <option value="ten">10</option>
-                        </select>
+            <form method="POST"> {% csrf_token %}
+                <label for="id_skills">Skills <span style="color:red">*</span></label>
+                {{form2.skills}}
+                <label for="id_sub_skill_name">Sub Skill Name <span style="color:red">*</span></label>
+                {{form2.sub_skill_name}}
+                <label for="id_sub_skill_level">Sub Skill Level<span style="color:red">*</span></label>
+                {{form2.sub_skill_level}}
+                <label for="id_sub_order">Sub Order <span style="color:red">*</span></label>
+                {{form2.sub_order}}
+                <button type="submit" class="btn btn-save">Save</button>
+            </form>
+                <table class="skill_list">
+                    <thead>
                         
-                    </td>
-                    <td class="border-0">
-                        <input style="outline: none; padding: 5px;" type="search" id="searchskills" placeholder="Search Skills">
+                        
+                        <tr class="ui_settings">
+                            <td class="border-0 showselectbox">
+                                show <select>
+                                    <option value="ten">10</option>
+                                </select>
+                                
+                            </td>
+                    <td class="border-0" id="searchsubskillscell">
+                        <input  style="outline: none; padding: 5px;" type="search" class="searchskills" placeholder="Search Skills">
                     </td>
                 </tr>
-                 <tr id="header_info">
-                     <th># </th>
-                     <th>Name</th>
-                     <th>Status</th>
-                     <th>Order</th>
+                <tr id="header_info">
+                    <th># </th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Order</th>
                      <th>Action </th>
-                 </tr>
+                    </tr>
                 </thead>
                 <tbody id="sub_skills_data">
-                
+                    
                 </tbody>
-             </table>
-        </div>
-    </form>
-</section>
+            </table>
+        </section>
+        
+    
+    </section>
 {% endblock %}
 
 {% block scripts %}
