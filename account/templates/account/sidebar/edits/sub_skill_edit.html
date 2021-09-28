@@ -1,0 +1,16 @@
+{% extends '../../manage_profile.html' %}
+{% block child_stylesheets %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'sidebar/skills/edits/sub_skill_edit.css' %}">
+{% endblock %}
+{% block manage_content %}
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-save">
+            Update Sub Skill
+        </button>
+    </form>
+
+</div>
+{% endblock %}

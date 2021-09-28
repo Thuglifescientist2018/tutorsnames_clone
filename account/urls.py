@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import Appointments, Blog, ChangePassword, ContactMessages, CreateProfile, Experience, FontsManage, ManageProfile, ManageSubscription, Layouts, FontsManage, Portfolio, Services, Skills, Testimonial, UploadCV
+from .views import Appointments, Blog, ChangePassword, ContactMessages, CreateProfile, Experience, FontsManage, ManageProfile, ManageSubscription, Layouts, FontsManage, Portfolio, Services, Skills, SkillEdit, SkillDelete, SkillActivate, SkillDeactivate, SubSKillActivate, SubSkillDeactivate, SubSkillDelete, SubSkillEdit, Testimonial, UploadCV
 
 urlpatterns = [
     path('signup/', CreateProfile.as_view(), name="signup"),
@@ -11,6 +11,17 @@ urlpatterns = [
     path('fonts/<str:pk>', FontsManage.as_view(), name='fonts'),
     path('services/', Services.as_view(), name='services'),
     path('skills/', Skills, name='skills'),
+    path('skill-edit/<str:pk>', SkillEdit.as_view(), name="skill_edit"),
+    path('skill-delete/<str:pk>', SkillDelete.as_view(), name="skill_delete"),
+    path('skill-activate/<str:pk>', SkillActivate, name="skill_activate"),
+    path('skill-deactivate/<str:pk>', SkillDeactivate, name="skill_deactivate"),
+    path('subskill-edit/<str:pk>', SubSkillEdit.as_view(), name="subskill_edit"),
+    path('subskill-delete/<str:pk>',
+         SubSkillDelete.as_view(), name="subskill_delete"),
+    path('subskill-activate/<str:pk>',
+         SubSKillActivate, name="subskill_activate"),
+    path('subskill-deactivate/<str:pk>',
+         SubSkillDeactivate, name="subskill_deactivate"),
     path('experience/', Experience.as_view(), name='experience'),
     path('testimonial/', Testimonial.as_view(), name='testimonial'),
     path('portfolio/', Portfolio.as_view(), name='portfolio'),

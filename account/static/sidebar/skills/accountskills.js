@@ -44,6 +44,8 @@ function addSubSkillsUIData(infos) {
        <tr>
        <td>${info.id}</td>
        <td>${info.sub_skill_name}</td>
+       <td> ${info.skills.name} </td>
+       <td> ${info.sub_skill_level} </td>
        <td><button class="status btn ${info.sub_skill_status ? 'btn-active' : 'btn-inactive'}">${info.sub_skill_status ? 'Active' : 'Inactive'}</button></td>
        <td>${info.sub_order}</td>
        <td>

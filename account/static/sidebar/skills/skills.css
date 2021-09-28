@@ -26,6 +26,17 @@
   margin: 1vw;
 }
 
+#skills_and_subskills #add_skills a,
+#skills_and_subskills #add_sub_skills a {
+  display: inline-block;
+  margin: 0.5%;
+}
+
+#skills_and_subskills #add_skills a i,
+#skills_and_subskills #add_sub_skills a i {
+  padding: 0.5rem;
+}
+
 #skills_and_subskills #add_skills input,
 #skills_and_subskills #add_skills select,
 #skills_and_subskills #add_sub_skills input,
@@ -50,6 +61,6 @@
 #skills_and_subskills #add_sub_skills .skill_list th,
 #skills_and_subskills #add_sub_skills .skill_list td {
   border: 1px solid black;
-  padding: 10px;
+  padding: 5px;
 }
 /*# sourceMappingURL=skills.css.map */

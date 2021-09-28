@@ -1,10 +1,13 @@
 from django.db.models import query
+from django.db.models.fields import files
 from django.http import request
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
+from django.urls.base import reverse
 from django.views.generic import CreateView
 from django.views.generic import UpdateView, TemplateView, ListView
-from .models import (User, Fonts, ManageServices,  ManageExperience,
+from django.views.generic.edit import DeleteView
+from .models import (ManageAddSkills, ManageAddSubSkills, User, Fonts, ManageServices,  ManageExperience,
                      ManageTestimonial, ManagePortfolio, ManageBlog, ManageAppointments, ManageUploadCV)
 from django import forms
 from django.shortcuts import get_object_or_404, redirect, render
@@ -43,7 +46,7 @@ class ManageProfile(UpdateView):
 
     template_name = 'account/manage_profile.html'
     form_class = ManageProfileForm
-    # with out get_object() it filled the form with  queryset = User.objects.all()
+    # with out get_object() it filled the form with+  queryset = User.objects.all()
     success_url = reverse_lazy("manage-profile", args=[2])
 
     def get_object(self):
@@ -107,9 +110,67 @@ def Skills(request):
         form.save()
     context = {
         "form": form,
-        "form2": form2
+        "form2": form2,
+        "skills": ManageAddSkills.objects.all(),
+        "sub_skills": ManageAddSubSkills.objects.all()
+
     }
     return render(request, template_name, context)
+
+
+class SkillDelete(DeleteView):
+    model = ManageAddSkills
+    template_name = 'account/sidebar/deletes/skill_delete.html'
+    success_url = reverse_lazy('skills')
+
+
+def SkillActivate(request, pk):
+    obj = get_object_or_404(ManageAddSkills, pk=pk)
+    obj.skill_status = True
+    obj.save()
+
+    return redirect(reverse_lazy('skills'))
+
+
+def SkillDeactivate(request, pk):
+    obj = get_object_or_404(ManageAddSkills, pk=pk)
+    obj.skill_status = False
+    obj.save()
+    return redirect(reverse_lazy('skills'))
+
+
+class SkillEdit(UpdateView):
+    model = ManageAddSkills
+    fields = "__all__"
+    success_url = reverse_lazy('skills')
+    template_name = "account/sidebar/edits/skilledit.html"
+
+
+class SubSkillEdit(UpdateView):
+    model = ManageAddSubSkills
+    fields = ['skills', 'sub_skill_name', 'sub_skill_level', 'sub_order']
+    success_url = reverse_lazy('skills')
+    template_name = "account/sidebar/edits/sub_skill_edit.html"
+
+
+class SubSkillDelete(DeleteView):
+    model = ManageAddSubSkills
+    template_name = "account/sidebar/deletes/subskill_delete.html"
+    success_url = reverse_lazy("skills")
+
+
+def SubSKillActivate(request, pk):
+    sub_skill = ManageAddSubSkills.objects.get(id=pk)
+    sub_skill.sub_skill_status = True
+    sub_skill.save()
+    return redirect(reverse_lazy('skills'))
+
+
+def SubSkillDeactivate(request, pk):
+    sub_skill = ManageAddSubSkills.objects.get(id=pk)
+    sub_skill.sub_skill_status = False
+    sub_skill.save()
+    return redirect(reverse_lazy('skills'))
 
 
 class Experience(UpdateView):

@@ -1,0 +1,25 @@
+#manage_profile {
+  grid-template-columns: 20% 80%;
+}
+.btn-save {
+  background: teal;
+  color: white;
+}
+#updateSkill {
+  padding: 1.5rem;
+  background-color: white;
+  form {
+    input,
+    label {
+      display: block;
+      padding: 10px;
+      font-family: "Courier New", Courier, monospace;
+      width: 50%;
+      outline: none;
+    }
+
+    label {
+      font-size: xx-large;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+#manage_profile {
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+}
+
+.btn-save {
+  background: teal;
+  color: white;
+}
+
+.container {
+  background: #fff;
+  padding: 1.5rem;
+  font-family: "Courier New", Courier, monospaces;
+  font-size: x-large;
+}
+
+.container form input,
+.container form select,
+.container form label {
+  padding: 10px;
+  display: block;
+  width: 50%;
+}
+/*# sourceMappingURL=sub_skill_edit.css.map */

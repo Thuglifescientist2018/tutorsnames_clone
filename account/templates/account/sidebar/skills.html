@@ -5,6 +5,7 @@
 {% endblock %}
 {% block manage_content %}
 <section id="skills_and_subskills">
+    {% block add_skills %}
     <section id="add_skills">
         <h3>Add Skills</h3>
         <form method="POST"> {% csrf_token %} 
@@ -41,15 +42,40 @@
                  </tr>
                 </thead>
                 <tbody id="skills_data">
+                {% for skill in skills %}
+                    <tr>
+                        <td>{{skill.id}}</td>
+                        <td>{{skill.skill_name}}</td>
+                        <td><button class="status btn {% if skill.skill_status %} btn-active {% else %} btn-inactive {% endif %}">{% if skill.skill_status %} Active {% else %} Inactive {% endif %}</button></td>
+                        <td>{{skill.order}}</td>
+                        <td>
+                            <a title="edit" href="{% url 'skill_edit' skill.pk %}" class="border-1 bg-secondary rounded text-white">
+                                <i class="fa fa-pencil-alt"></i>
 
-               
-                 
+                            </a>
+                            <a title="delete"  href="{% url 'skill_delete' skill.pk %}" class="border-1 bg-secondary rounded text-white">
+                                <i class="fa fa-trash"></i>
+
+                            </a>
+                            {% if skill.skill_status %}
+                            <a title="deactivate" href="{% url 'skill_deactivate' skill.id %}" class="border-1 bg-secondary rounded text-white">
+                                <i class="fa fa-window-close"></i>
+
+                            </a>
+                            {% else %}
+                            <a title="activate" href="{% url 'skill_activate' skill.id %}" class="border-1 bg-secondary rounded text-white">
+                                <i class="fas fa-check-circle"></i>
+                            </a>
+                            {% endif %}
+                        </td>
+                     </tr>
+                 {% endfor %}
                 </tbody>
              </table>
           </section>
         </section>
-        
-        
+        {% endblock %}
+        {% block add_sub_skills %}
         <section id="add_sub_skills">
             <h3>Add Sub Skills</h3>
             <form method="POST"> {% csrf_token %}
@@ -80,22 +106,56 @@
                 </tr>
                 <tr id="header_info">
                     <th># </th>
-                    <th>Name</th>
-                    <th>Status</th>
-                    <th>Order</th>
+                    <th>Sub Skill</th>
+                    <th>Skill</th>
+                    <th>Sub Skill Level</th>
+                     <th>Status </th>
+                     <th>Order </th>
                      <th>Action </th>
                     </tr>
                 </thead>
                 <tbody id="sub_skills_data">
-                    
+                    {% for sub_skill in sub_skills %}
+                    <tr>
+                        <td>{{sub_skill.id}}</td>
+                        <td>{{sub_skill.sub_skill_name}}</td>
+                        <td> {{sub_skill.skills}} </td>
+                        <td> {{sub_skill.sub_skill_level}} </td>
+                        <td><button class="status btn {% if sub_skill.sub_skill_status %}  btn-active {% else %} btn-inactive {% endif %}">{% if sub_skill.sub_skill_status %}  Active: {% else %} Inactive {% endif %}</button></td>
+                        <td>{{sub_skill.sub_order}}</td>
+                        <td>
+                            <a title="edit" href="{% url 'subskill_edit' sub_skill.pk %}" class="border-1 bg-secondary rounded text-white">
+                                <i class="fa fa-pencil-alt"></i>
+
+                            </a>
+                            <a title="delete"  href="{% url 'subskill_delete' sub_skill.pk %}" class="border-1 bg-secondary rounded text-white">
+                                <i class="fa fa-trash"></i>
+
+                            </a>
+                            {% if sub_skill.sub_skill_status %}
+                            <a title="deactivate" href="{% url 'subskill_deactivate' sub_skill.pk %}" class="border-1 bg-secondary rounded text-white">
+                                <i class="fa fa-window-close"></i>
+
+                            </a>
+                            {% else %}
+                            <a title="activate" href="{% url 'subskill_activate' sub_skill.pk %}" class="border-1 bg-secondary rounded text-white">
+                                <i class="fas fa-check-circle"></i>
+                            </a>
+                            {% endif %}
+
+                            
+                        </td>
+                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>
+        {% endblock %}
         
     
     </section>
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'sidebar/skills/accountskills.js' %}"></script>
+
 {% endblock %}

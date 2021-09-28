@@ -1,0 +1,28 @@
+#manage_profile {
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+}
+
+.btn-save {
+  background: teal;
+  color: white;
+}
+
+#updateSkill {
+  padding: 1.5rem;
+  background-color: white;
+}
+
+#updateSkill form input,
+#updateSkill form label {
+  display: block;
+  padding: 10px;
+  font-family: "Courier New", Courier, monospace;
+  width: 50%;
+  outline: none;
+}
+
+#updateSkill form label {
+  font-size: xx-large;
+}
+/*# sourceMappingURL=skill_edit.css.map */

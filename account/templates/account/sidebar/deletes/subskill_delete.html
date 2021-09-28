@@ -1,0 +1,12 @@
+{% extends '../../manage_profile.html' %}
+
+{% block manage_content %}
+<section class="container">
+    <h2>Are you sure you want to delete: {{object}}</h2>
+    <form method="POST"> {% csrf_token %}
+        <button type="submit" class='btn btn-danger'>Confirm</button>
+    </form>
+
+</section>
+
+{% endblock %}

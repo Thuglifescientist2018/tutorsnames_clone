@@ -73,7 +73,7 @@ class ManageAddSkills(models.Model):
 
     skill_name = models.CharField(blank=False, null=True, max_length=255)
     order = models.IntegerField(blank=True, null=True)
-    skill_status = models.BooleanField(blank=True, null=False, default=True)
+    skill_status = models.BooleanField()
 
     def __str__(self):
         return self.skill_name
@@ -81,16 +81,16 @@ class ManageAddSkills(models.Model):
 
 class ManageAddSubSkills(models.Model):
     SUB_SKILL_LEVELS = [
-        ("ten_percent", "10%"),
-        ("twenty_percent", "20%"),
-        ("thirty_percent", "30%"),
-        ("fourty_percent", "40%"),
-        ("fifty_percent", "50%"),
-        ("sixty_percent", "60%"),
-        ("seventy_percent", "70%"),
-        ("eighty_percent", "80%"),
-        ("ninety_percent", "90%"),
-        ("hundred_percent", "100%"),
+        ("10%", "10%"),
+        ("20%", "20%"),
+        ("30%", "30%"),
+        ("40%", "40%"),
+        ("50%", "50%"),
+        ("60%", "60%"),
+        ("70%", "70%"),
+        ("80%", "80%"),
+        ("90", "90%"),
+        ("100%", "100%"),
     ]
     skill_status = models.BooleanField(blank=True, null=False, default=True)
     service_details = models.TextField(blank=True, null=True)
@@ -101,7 +101,10 @@ class ManageAddSubSkills(models.Model):
         blank=False, null=True, choices=SUB_SKILL_LEVELS, max_length=255)
     sub_order = models.IntegerField(blank=True, null=True)
     sub_skill_status = models.BooleanField(
-        blank=True, null=False, default=True)
+        blank=True, null=False)
+
+    def __str__(self):
+        return self.sub_skill_name
 
 
 class ManageExperience(models.Model):

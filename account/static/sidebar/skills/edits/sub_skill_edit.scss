@@ -1,0 +1,23 @@
+#manage_profile {
+  grid-template-columns: 20% 80%;
+}
+.btn-save {
+  background: teal;
+  color: white;
+}
+.container {
+  background: #fff;
+  padding: 1.5rem;
+  font-family: "Courier New", Courier, monospaces;
+  font-size: x-large;
+
+  form {
+    input,
+    select,
+    label {
+      padding: 10px;
+      display: block;
+      width: 50%;
+    }
+  }
+}
