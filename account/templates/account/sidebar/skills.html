@@ -13,6 +13,9 @@
             {{form.skill_name}}
             <label for="id_order">Order</label>
             {{form.order}}
+            <div id="skill_status" style="display: none;">
+                {{form.skill_status}}
+            </div>
             <button type="submit" class="btn btn-save">Save Skill</button>
         </form>
 
@@ -30,7 +33,7 @@
                         
                     </td>
                     <td id="searchskillscell" class="border-0">
-                        <input style="outline: none; padding: 5px;" type="search" class="searchskills" placeholder="Search Skills">
+                        <input style="outline: none; padding: 5px;" type="search" id="searchskills" class="searchskills" placeholder="Search Skills">
                     </td>
                 </tr>
                  <tr id="header_info">
@@ -44,8 +47,8 @@
                 <tbody id="skills_data">
                 {% for skill in skills %}
                     <tr>
-                        <td>{{skill.id}}</td>
-                        <td>{{skill.skill_name}}</td>
+                        <td class="s_sn">{{skill.id}}</td>
+                        <td class="skill_name">{{skill.skill_name}}</td>
                         <td><button class="status btn {% if skill.skill_status %} btn-active {% else %} btn-inactive {% endif %}">{% if skill.skill_status %} Active {% else %} Inactive {% endif %}</button></td>
                         <td>{{skill.order}}</td>
                         <td>
@@ -71,7 +74,21 @@
                      </tr>
                  {% endfor %}
                 </tbody>
+               
              </table>
+             <div id="entries_and_page" style="display: flex; justify-content: space-between; padding: 1rem">
+                <div id="entries">
+                    <span id="s_p_info">
+                        Showing <span id="from"></span> to <span id="to"></span> of <span id="nofse"></span> Entries
+                    </span>
+                </div>
+                <div id="pagination">
+                    <button id="prevBtn" class="btn">Previous</button>
+                    <button id="firstBtn" class="btn btn-primary">1</button>
+                   
+                    <button class="btn">Next</button>
+                </div>
+            </div>
           </section>
         </section>
         {% endblock %}
@@ -87,6 +104,10 @@
                 {{form2.sub_skill_level}}
                 <label for="id_sub_order">Sub Order <span style="color:red">*</span></label>
                 {{form2.sub_order}}
+                <div id="sub_skill_status" style="display: none;">
+                    {{form2.sub_skill_status}}
+
+                </div>
                 <button type="submit" class="btn btn-save">Save</button>
             </form>
                 <table class="skill_list">
@@ -101,7 +122,7 @@
                                 
                             </td>
                     <td class="border-0" id="searchsubskillscell">
-                        <input  style="outline: none; padding: 5px;" type="search" class="searchskills" placeholder="Search Skills">
+                        <input  style="outline: none; padding: 5px;" type="search" id="search_sub_skills" class="searchskills" placeholder="Search Skills">
                     </td>
                 </tr>
                 <tr id="header_info">
@@ -118,7 +139,7 @@
                     {% for sub_skill in sub_skills %}
                     <tr>
                         <td>{{sub_skill.id}}</td>
-                        <td>{{sub_skill.sub_skill_name}}</td>
+                        <td class="sub_skill_name">{{sub_skill.sub_skill_name}}</td>
                         <td> {{sub_skill.skills}} </td>
                         <td> {{sub_skill.sub_skill_level}} </td>
                         <td><button class="status btn {% if sub_skill.sub_skill_status %}  btn-active {% else %} btn-inactive {% endif %}">{% if sub_skill.sub_skill_status %}  Active: {% else %} Inactive {% endif %}</button></td>
@@ -157,5 +178,6 @@
 {% endblock %}
 
 {% block scripts %}
-
+{% load static %}
+<script src="{% static 'sidebar/skills/accountskillsearch.js' %}"></script>
 {% endblock %}

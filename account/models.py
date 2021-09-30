@@ -73,7 +73,7 @@ class ManageAddSkills(models.Model):
 
     skill_name = models.CharField(blank=False, null=True, max_length=255)
     order = models.IntegerField(blank=True, null=True)
-    skill_status = models.BooleanField()
+    skill_status = models.BooleanField(blank=True, null=False, default=True)
 
     def __str__(self):
         return self.skill_name
@@ -101,7 +101,7 @@ class ManageAddSubSkills(models.Model):
         blank=False, null=True, choices=SUB_SKILL_LEVELS, max_length=255)
     sub_order = models.IntegerField(blank=True, null=True)
     sub_skill_status = models.BooleanField(
-        blank=True, null=False)
+        blank=True, null=False, default=True)
 
     def __str__(self):
         return self.sub_skill_name
