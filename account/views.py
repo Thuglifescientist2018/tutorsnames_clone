@@ -1,8 +1,10 @@
+from re import template
 from django.db.models import query
 from django.db.models.fields import files
 from django.http import request
+from django.http.response import HttpResponse
 from django.urls import reverse_lazy
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.urls.base import reverse
 from django.views.generic import CreateView
 from django.views.generic import UpdateView, TemplateView, ListView
@@ -15,6 +17,7 @@ from .forms import (ManageAddSubSkillsForm, ManageProfileForm, ManageFontsForm, 
                     ManageTestimonialForm, ManagePortfolioForm, ManageBlogForm, ManageAppointmentsForm, ManageUploadCVForm, ManageChangePasswordForm
                     )
 from pricing.models import MonthlyStudent, MonthlyTutor, MonthlyPro, YearlyStudent, YearlyTutor, YearlyPro
+
 # Create your views here.
 
 
@@ -215,3 +218,21 @@ class UploadCV(UpdateView):
 class ChangePassword(UpdateView):
     form_class = ManageChangePasswordForm
     template_name = 'account/sidebar/change_password.html'
+
+
+def log_in(request):
+    template_name = 'account/login.html'
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('/')
+
+    return render(request, template_name)
+
+
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page
+    return redirect('/')

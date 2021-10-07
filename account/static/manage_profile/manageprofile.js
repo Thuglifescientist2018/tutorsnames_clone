@@ -51,3 +51,19 @@ if(selected.selectedIndex === 2) {
 
 }
 
+// manage profile button(navbar) show or hide options
+let user_profile_name = document.getElementById('profile_name')
+let user_profile_options = document.getElementById('user_profile_options');
+
+
+user_profile_name.addEventListener('click', function(e) {
+    e.preventDefault(); 
+    if(user_profile_options.classList.contains('dont_display')) {
+        user_profile_options.classList.remove('dont_display')
+    }
+    else {
+        user_profile_options.classList.add('dont_display')
+    }
+  
+   console.log(user_profile_options_list)
+})

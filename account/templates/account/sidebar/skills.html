@@ -27,8 +27,14 @@
                 
                 <tr class="ui_settings">
                     <td class="border-0 showselectbox">
-                        show <select>
-                            <option value="ten">10</option>
+                        show <select id="skill_page_size">
+                        
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>100</option>
+                          
+                           
                         </select>
                         
                     </td>
@@ -45,34 +51,7 @@
                  </tr>
                 </thead>
                 <tbody id="skills_data">
-                {% for skill in skills %}
-                    <tr>
-                        <td class="s_sn">{{skill.id}}</td>
-                        <td class="skill_name">{{skill.skill_name}}</td>
-                        <td><button class="status btn {% if skill.skill_status %} btn-active {% else %} btn-inactive {% endif %}">{% if skill.skill_status %} Active {% else %} Inactive {% endif %}</button></td>
-                        <td>{{skill.order}}</td>
-                        <td>
-                            <a title="edit" href="{% url 'skill_edit' skill.pk %}" class="border-1 bg-secondary rounded text-white">
-                                <i class="fa fa-pencil-alt"></i>
-
-                            </a>
-                            <a title="delete"  href="{% url 'skill_delete' skill.pk %}" class="border-1 bg-secondary rounded text-white">
-                                <i class="fa fa-trash"></i>
-
-                            </a>
-                            {% if skill.skill_status %}
-                            <a title="deactivate" href="{% url 'skill_deactivate' skill.id %}" class="border-1 bg-secondary rounded text-white">
-                                <i class="fa fa-window-close"></i>
-
-                            </a>
-                            {% else %}
-                            <a title="activate" href="{% url 'skill_activate' skill.id %}" class="border-1 bg-secondary rounded text-white">
-                                <i class="fas fa-check-circle"></i>
-                            </a>
-                            {% endif %}
-                        </td>
-                     </tr>
-                 {% endfor %}
+              
                 </tbody>
                
              </table>
@@ -82,11 +61,10 @@
                         Showing <span id="from"></span> to <span id="to"></span> of <span id="nofse"></span> Entries
                     </span>
                 </div>
-                <div id="pagination">
-                    <button id="prevBtn" class="btn">Previous</button>
-                    <button id="firstBtn" class="btn btn-primary">1</button>
-                   
-                    <button class="btn">Next</button>
+                <div id="pagination_buttons">
+                    <button id="s_prevBtn" class="btn" onclick="skillPrevious()" >Previous</button>
+                    <button id="s_firstBtn" class="btn btn-primary">1</button>
+                    <button id="s_nextBtn" class="btn" onclick="skillNext()">Next</button>
                 </div>
             </div>
           </section>
@@ -116,8 +94,12 @@
                         
                         <tr class="ui_settings">
                             <td class="border-0 showselectbox">
-                                show <select>
-                                    <option value="ten">10</option>
+                                show <select id="subskill_page_size">
+                                  
+                                    <option >10</option>
+                                    <option >25</option>
+                                    <option >50</option>
+                                    <option >100</option>
                                 </select>
                                 
                             </td>
@@ -136,40 +118,23 @@
                     </tr>
                 </thead>
                 <tbody id="sub_skills_data">
-                    {% for sub_skill in sub_skills %}
-                    <tr>
-                        <td>{{sub_skill.id}}</td>
-                        <td class="sub_skill_name">{{sub_skill.sub_skill_name}}</td>
-                        <td> {{sub_skill.skills}} </td>
-                        <td> {{sub_skill.sub_skill_level}} </td>
-                        <td><button class="status btn {% if sub_skill.sub_skill_status %}  btn-active {% else %} btn-inactive {% endif %}">{% if sub_skill.sub_skill_status %}  Active: {% else %} Inactive {% endif %}</button></td>
-                        <td>{{sub_skill.sub_order}}</td>
-                        <td>
-                            <a title="edit" href="{% url 'subskill_edit' sub_skill.pk %}" class="border-1 bg-secondary rounded text-white">
-                                <i class="fa fa-pencil-alt"></i>
-
-                            </a>
-                            <a title="delete"  href="{% url 'subskill_delete' sub_skill.pk %}" class="border-1 bg-secondary rounded text-white">
-                                <i class="fa fa-trash"></i>
-
-                            </a>
-                            {% if sub_skill.sub_skill_status %}
-                            <a title="deactivate" href="{% url 'subskill_deactivate' sub_skill.pk %}" class="border-1 bg-secondary rounded text-white">
-                                <i class="fa fa-window-close"></i>
-
-                            </a>
-                            {% else %}
-                            <a title="activate" href="{% url 'subskill_activate' sub_skill.pk %}" class="border-1 bg-secondary rounded text-white">
-                                <i class="fas fa-check-circle"></i>
-                            </a>
-                            {% endif %}
-
-                            
-                        </td>
-                     </tr>
-                    {% endfor %}
+                   
                 </tbody>
             </table>
+            <div id="entries_and_page" style="display: flex; justify-content: space-between; padding: 1rem">
+                <div id="entries">
+                    <!-- subskill_pagination info -->
+                    <span id="subs_p_info"> 
+                        <!-- n_ofsube: number of sub skills entries -->
+                        Showing <span id="from"></span> to <span id="to"></span> of <span id="n_ofsub_e"></span> Entries
+                    </span>
+                </div>
+                <div id="pagination_buttons">
+                    <button id="subskill_prevBtn" class="btn" onclick="subSkillPrevious()" >Previous</button>
+                    <button id="subskill_firstBtn" class="btn btn-primary">1</button>
+                    <button id="subskill_nextBtn" class="btn" onclick="subSkillNext()">Next</button>
+                </div>
+            </div>
         </section>
         {% endblock %}
         
@@ -179,5 +144,5 @@
 
 {% block scripts %}
 {% load static %}
-<script src="{% static 'sidebar/skills/accountskillsearch.js' %}"></script>
+<script src="{% static 'sidebar/skills/accountskills.js' %}"></script>
 {% endblock %}

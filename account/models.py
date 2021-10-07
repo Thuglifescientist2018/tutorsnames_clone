@@ -89,7 +89,7 @@ class ManageAddSubSkills(models.Model):
         ("60%", "60%"),
         ("70%", "70%"),
         ("80%", "80%"),
-        ("90", "90%"),
+        ("90%", "90%"),
         ("100%", "100%"),
     ]
     skill_status = models.BooleanField(blank=True, null=False, default=True)

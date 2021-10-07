@@ -16,6 +16,13 @@ body {
   background: #f4f6f9;
 }
 
+.dont_display {
+  display: none !important;
+  opacity: 0%;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
 #navbar {
   position: -webkit-sticky;
   position: sticky;
@@ -70,6 +77,25 @@ body {
   padding: 1rem;
   font-weight: bold;
   font-size: 1rem;
+}
+
+#navbar #user_profile_options {
+  border-radius: 5px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 100%;
+}
+
+#navbar #user_profile_options #user_options {
+  margin-top: 4%;
+}
+
+#navbar #user_profile_options #user_options a {
+  display: block;
+  padding: 0.5rem;
+  margin: 5%;
+  background: white;
+  border-radius: 10px;
 }
 
 #showcase .container .textandimage {

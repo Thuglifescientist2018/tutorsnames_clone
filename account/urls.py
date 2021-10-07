@@ -1,4 +1,5 @@
 
+from .views import log_in, logout_view
 from django.urls import path
 from .views import Appointments, Blog, ChangePassword, ContactMessages, CreateProfile, Experience, FontsManage, ManageProfile, ManageSubscription, Layouts, FontsManage, Portfolio, Services, Skills, SkillEdit, SkillDelete, SkillActivate, SkillDeactivate, SubSKillActivate, SubSkillDeactivate, SubSkillDelete, SubSkillEdit, Testimonial, UploadCV
 
@@ -30,6 +31,8 @@ urlpatterns = [
     path('contact_messages/', ContactMessages.as_view(), name='contact_messages'),
     path('upload_cv/', UploadCV.as_view(), name='upload_cv'),
     path('change_password/', ChangePassword.as_view(), name='change_password'),
+    path('log_in/', log_in, name='log_in'),
+    path('log_out/', logout_view, name='log_out')
 
 
 ]

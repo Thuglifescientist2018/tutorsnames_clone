@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'tutornames.urls'
 
 TEMPLATES = [
@@ -144,3 +145,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, "static")
 MEDIA_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, "media")
 MEDIA_URL = '/media/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+
+}
