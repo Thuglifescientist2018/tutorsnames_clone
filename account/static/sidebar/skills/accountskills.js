@@ -22,6 +22,7 @@ function fetchSkillsData(size) {
 fetchSkillsData();
 // function that puts data received from the function fetchSkillsDatas argument pass
 function putIntoSkillsUI(skills) {
+    clearSkillsUI();
   skills.results.forEach(function(skill) {
      
       skills_data_ui.innerHTML += `
@@ -59,6 +60,7 @@ function fetchSubSkillsData(size)  {
 
 fetchSubSkillsData();
 function putIntoSubSkillsUI(sub_skills)  {
+    clearSubSkillsUI();
     sub_skills.results.forEach(function(sub_skill) {
         sub_skills_data_ui.innerHTML += `
         <tr>
@@ -261,8 +263,8 @@ function searchSubSkillsUI(searches) {
     })
 }
 searchskills.addEventListener('keyup', function() {
+if(this.value  !== "") {
     
-   
     fetch('/api/skills_all/').then(response => response.json()).then(datas => {
   
         const filtered_skills = datas.filter(data => data.skill_name.toLowerCase().includes(this.value.toLowerCase()))
@@ -271,17 +273,28 @@ searchskills.addEventListener('keyup', function() {
        
         
     } )
+
+} else {
+    fetchSkillsData()
+}
     
     
 })
 search_sub_skills.addEventListener('keyup', function() {
-  
-    fetch('/api/subskills_all/').then(response => response.json()).then(datas => {
+
+    if(this.value  !== "")  {
+        
+        fetch('/api/subskills_all/').then(response => response.json()).then(datas => {
+           
+           const filtered_skills = datas.filter(data => data.sub_skill_name.toLowerCase().includes(this.value.toLowerCase()))
+           console.log('subskills:', filtered_skills)
+           searchSubSkillsUI(filtered_skills)
+        });
        
-       const filtered_skills = datas.filter(data => data.sub_skill_name.toLowerCase().includes(this.value.toLowerCase()))
-       console.log('subskills:', filtered_skills)
-       searchSubSkillsUI(filtered_skills)
-    });
+    }else {
+        fetchSubSkillsData();
+    }
+  
     
     
 })
