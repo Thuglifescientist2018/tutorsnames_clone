@@ -32,9 +32,9 @@ function putIntoSkillsUI(skills) {
                     <td>${skill.skill_status} </td>
                     <td>${skill.order} </td>
                     <td> 
-                        <i class="fa fa-pencil-alt"></i>
-                        <i class="fa fa-trash"></i>
-                        ${skill.skill_status ? "<i class='fas fa-window-close'></i>": "<i class='fas fa-check-circle'></i>"}
+                        <i id="${skill.id}" class="fa fa-pencil-alt"></i>
+                        <i id="${skill.id}" class="fa fa-trash"></i>
+                        ${skill.skill_status ? `<i id="${skill.id}" class='fas fa-window-close'></i>`: `<i id="${skill.id}" class='fas fa-check-circle'></i>`}
                     </td>
                   
 
@@ -262,24 +262,38 @@ function searchSubSkillsUI(searches) {
         
     })
 }
-searchskills.addEventListener('keyup', function() {
-if(this.value  !== "") {
-    
-    fetch('/api/skills_all/').then(response => response.json()).then(datas => {
-  
-        const filtered_skills = datas.filter(data => data.skill_name.toLowerCase().includes(this.value.toLowerCase()))
-       searchSkillsUI(filtered_skills)
-        
-       
-        
-    } )
+let search_skills_page = 1;
+function searchSkills() {
+    if(this.value  !== "") {
+   
+        fetch('/api/skills/?page='+ search_skills_page).then(response => response.json()).then(datas => {
+            
+            const filtered_skills = datas.results.filter(data => data.skill_name.toLowerCase().includes(this.value.toLowerCase()))
+            console.log("this value ", this.value)
+           
+            if(filtered_skills.length === 0 && datas.next) {
+                search_skills_page++; 
+            }
+           
 
-} else {
-    fetchSkillsData()
+           searchSkillsUI(filtered_skills)
+            return filtered_skills;
+           
+            
+        } )
+        
+
+    
+    } else {
+        fetchSkillsData()
+        search_skills_page = 1;
+       
+    }
+    
 }
-    
-    
-})
+searchskills.addEventListener('keyup', searchSkills)
+
+
 search_sub_skills.addEventListener('keyup', function() {
 
     if(this.value  !== "")  {
@@ -298,3 +312,42 @@ search_sub_skills.addEventListener('keyup', function() {
     
     
 })
+
+// CRUD = Create, Read, Update, Delete functionality
+//Skill CRUD
+
+skills_data_ui.addEventListener("click", updateSkill)
+
+//create popup UI for CRUD Icon Clicks
+function updateSkill(event) {
+    if(event.target.classList.contains('fa-pencil-alt')) {
+        let targetParent = event.target.parentElement.parentElement;
+        let skill_id = event.target.id;
+        fetch('/api/update_skill/' + skill_id).then(response => response.json()).then(data => updateSkillViewUI(data));
+          
+        
+    }
+    
+    
+} 
+function updateSkillViewUI(skill) {
+    let skills_and_subskills = document.getElementById("skills_and_subskills");
+    let manage_profile = document.getElementById("manage_profile");
+    manage_profile.style.gridTemplateColumns = "20% 80%";
+    skills_and_subskills.innerHTML = "";
+
+    skills_and_subskills.innerHTML += `
+    <div id="updateView">
+     <h1>Update this item</h1>
+     <form method='POST'>
+       <label for="skill_name">Skill Name:</label>
+       <input type="text" id="skill_name" value='${skill.skill_name}'>
+       <label for="order">Order:</label>
+       <input type="text" id="order" value='${skill.order}'>
+       <button type="submit" id="skill_update_btn" class='btn btn-update'>Update</button>
+     </form>
+   </div>
+    `
+}
+// skill update_btn 
+
