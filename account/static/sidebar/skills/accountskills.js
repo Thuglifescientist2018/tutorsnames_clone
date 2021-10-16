@@ -291,27 +291,38 @@ function searchSkills() {
     }
     
 }
+let search_subskills_page = 1;
 searchskills.addEventListener('keyup', searchSkills)
-
-
-search_sub_skills.addEventListener('keyup', function() {
-
-    if(this.value  !== "")  {
-        
-        fetch('/api/subskills_all/').then(response => response.json()).then(datas => {
+function searchSubSkills() {
+    if(this.value  !== "") {
+   
+        fetch('/api/subskills/?page='+ search_subskills_page).then(response => response.json()).then(datas => {
+            
+            const filtered_skills = datas.results.filter(data => data.sub_skill_name.toLowerCase().includes(this.value.toLowerCase()))
+            console.log("this value ", this.value)
            
-           const filtered_skills = datas.filter(data => data.sub_skill_name.toLowerCase().includes(this.value.toLowerCase()))
-           console.log('subskills:', filtered_skills)
+            if(filtered_skills.length === 0 && datas.next) {
+                search_subskills_page++; 
+            }
+           
+
            searchSubSkillsUI(filtered_skills)
-        });
+            return filtered_skills;
+           
+            
+        } )
+        
+
+    
+    } else {
+        fetchSubSkillsData()
+        search_subskills_page = 1;
        
-    }else {
-        fetchSubSkillsData();
     }
-  
     
-    
-})
+}
+
+search_sub_skills.addEventListener('keyup', searchSubSkills)
 
 // CRUD = Create, Read, Update, Delete functionality
 //Skill CRUD
