@@ -277,7 +277,7 @@ function searchSubSkillsUI(searches) {
                 </a>
 
           
-                <a href="/accounts/skill-delete/${search.id}">
+                <a href="/accounts/subskill-delete/${search.id}">
                 <i class="fa fa-trash"></i>
                 </a>
                 
