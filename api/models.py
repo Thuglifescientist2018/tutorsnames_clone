@@ -11,7 +11,7 @@ class SkillsSerializer(serializers.ModelSerializer):
 
 class SubSkillsSerializer(serializers.ModelSerializer):
     # foreign key = skills so skills refers to the model manageaddskills and then accessing its field skill_name
-    skills = serializers.CharField(source='skills.skill_name')
+    skills = serializers.CharField(source='skills.skill_name', allow_null=True)
 
     class Meta:
         model = ManageAddSubSkills

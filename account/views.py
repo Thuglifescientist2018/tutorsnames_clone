@@ -179,10 +179,8 @@ def SubSkillDeactivate(request, pk):
 class Experience(UpdateView):
     form_class = ManageExperienceForm
 
-    def get_object(self):
-        id_ = ManageSkills  .objects.all().last().id
-        if id_:
-            return get_object_or_404(ManageSkills, id=id_)
+    # def get_object(self):
+
     template_name = 'account/sidebar/experience.html'
 
 

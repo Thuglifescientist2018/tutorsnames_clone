@@ -63,4 +63,23 @@
   border: 1px solid black;
   padding: 5px;
 }
+
+#updateView {
+  background: steelblue;
+  padding: 0.75rem 1rem;
+  color: white;
+}
+
+#updateView input,
+#updateView label {
+  display: block;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  outline: none;
+}
+
+#updateView .btn-update {
+  background: white;
+  color: black;
+}
 /*# sourceMappingURL=skills.css.map */

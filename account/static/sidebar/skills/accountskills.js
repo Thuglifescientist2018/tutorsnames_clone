@@ -17,6 +17,9 @@ function fetchSkillsData(size) {
         })
         
 }
+let s_current_page = document.getElementById("s_current_page");
+let s_total_pages = document.getElementById('s_total_pages')
+
 // fetchSkillsData() call to pass fetched data to putIntoSkillsUI
 
 fetchSkillsData();
@@ -32,16 +35,24 @@ function putIntoSkillsUI(skills) {
                     <td>${skill.skill_status} </td>
                     <td>${skill.order} </td>
                     <td> 
+                    <a href="/accounts/skill-edit/${skill.id}">
                         <i id="${skill.id}" class="fa fa-pencil-alt"></i>
+                    </a>
+                    <a href="/accounts/skill-delete/${skill.id}">
                         <i id="${skill.id}" class="fa fa-trash"></i>
-                        ${skill.skill_status ? `<i id="${skill.id}" class='fas fa-window-close'></i>`: `<i id="${skill.id}" class='fas fa-check-circle'></i>`}
+                    </a>
+                        ${skill.skill_status ? `<a href="/accounts/skill-deactivate/${skill.id}"><i id="${skill.id}" class='fas fa-window-close'></i></a>`: `<a href="/accounts/skill-activate/${skill.id}"><i id="${skill.id}" class='fas fa-check-circle'></i></a>`}
                     </td>
                   
 
             </tr>
       `
   })
+  s_current_page.innerText = 1;
+  s_total_pages.innerText = skills.total_pages;
 
+
+  
 }
 
 // function that fetches the sub skills from the api url
@@ -59,6 +70,9 @@ function fetchSubSkillsData(size)  {
 }
 
 fetchSubSkillsData();
+let sub_current_page = document.getElementById("sub_current_page");
+let sub_total_pages = document.getElementById("sub_total_pages")
+
 function putIntoSubSkillsUI(sub_skills)  {
     clearSubSkillsUI();
     sub_skills.results.forEach(function(sub_skill) {
@@ -71,13 +85,23 @@ function putIntoSubSkillsUI(sub_skills)  {
             <td> ${sub_skill.sub_skill_status} </td>  
             <td> ${sub_skill.sub_order} </td>  
             <td>
-      
+                <a href="/accounts/subskill-edit/${sub_skill.id}">
                 <i class="fa fa-pencil-alt"></i>
+                </a>
 
           
-           
+                <a href="/accounts/subskill-delete/${sub_skill.id}">
                 <i class="fa fa-trash"></i>
-                ${sub_skill.sub_skill_status ? "<i class='fas fa-window-close'></i>": "<i class='fas fa-check-circle'></i>"}
+                </a>
+                ${sub_skill.sub_skill_status ? `<a href="/accounts/subskill-deactivate/${sub_skill.id}"><i class='fas fa-window-close'></i></a>`: 
+                `
+                <a href="/accounts/subskill-activate/${sub_skill.id}">
+                <i class='fas fa-check-circle'></i>
+                </a>
+
+
+                `
+            }
     
              </td>
    
@@ -90,6 +114,10 @@ function putIntoSubSkillsUI(sub_skills)  {
         </tr>
         `
     })
+    sub_current_page.innerText = 1;
+    sub_total_pages.innerText = sub_skills.total_pages;
+
+
 
 }
 // usage: skill_page_size and subskill_page_size event listener
@@ -119,11 +147,11 @@ function skillPrevious() {
                     page--;
                     console.log(page)
                 })
+                s_current_page.innerText = page;
             }
            
         }
     )
-  
 
 }
 function skillNext() {
@@ -136,9 +164,10 @@ fetch('/api/skills/?page=' + page).then(response => response.json()).then(
                 putIntoSkillsUI(data);
                 
                 page++;
+                s_current_page.innerText = page;  
                 console.log(page)
-            }
-                )
+            })
+            
         }
        
     }
@@ -157,9 +186,9 @@ function subSkillPrevious() {
                     putIntoSubSkillsUI(data);
                     
                     subskills_page--;
-                    console.log("subskills page after previous: ", subskills_page)
-                }
-                    )
+                    sub_current_page.innerText = page;
+                })
+                
             }
            
         }
@@ -172,12 +201,11 @@ function subSkillNext() {
             if(data.next) {
                 fetch(data.next).then(response => response.json()).then(data => {
                     clearSubSkillsUI()
-                    putIntoSubSkillsUI(data);
+                    putIntoSubSkillsUI(data);       
                     
                     subskills_page++;
-                    console.log("subskills page after next: " , subskills_page)
-                }
-                    )
+                    sub_current_page.innerText = subskills_page;
+                })
             }
            
         }
@@ -198,7 +226,7 @@ subskill_page_size.addEventListener("change", function() {
     clearSubSkillsUI();
     fetchSubSkillsData(this.value)
 })
-
+    
 // search
 
 let search_sub_skills = document.getElementById('search_sub_skills');   
@@ -215,9 +243,12 @@ function searchSkillsUI(searches) {
                 <td>${search.skill_status} </td>
                 <td>${search.order} </td>
                 <td> 
+                <a href="/accounts/skill-edit/${search.id}">
                     <i class="fa fa-pencil-alt"></i>
+                </a>
+                <a href="/accounts/skill-delete/${search.id}">
                     <i class="fa fa-trash"></i>
-                    ${search.skill_status ? "<i class='fas fa-window-close'></i>": "<i class='fas fa-check-circle'></i>"}
+                    ${search.skill_status ? `<a href="/accounts/skill-deactivate/${search.id}"><i class='fas fa-window-close'></i></a>`: `<a href="/accounts/skill-activate/${search.id}"><i class='fas fa-check-circle'></i></a>`}
                 </td>
               
 
@@ -241,13 +272,25 @@ function searchSubSkillsUI(searches) {
             <td> ${search.sub_skill_status} </td>  
             <td> ${search.sub_order} </td>  
             <td>
-      
+                <a href="/accounts/subskill-edit/${search.id}">
                 <i class="fa fa-pencil-alt"></i>
+                </a>
 
           
-           
+                <a href="/accounts/skill-delete/${search.id}">
                 <i class="fa fa-trash"></i>
-                ${search.sub_skill_status ? "<i class='fas fa-window-close'></i>": "<i class='fas fa-check-circle'></i>"}
+                </a>
+                
+                ${search.sub_skill_status ? `
+                <a href="/accounts/subskill-deactivate/${search.id}">
+                <i class='fas fa-window-close'></i>
+                </a>
+                
+                `: `
+                <a href="/accounts/subskill-activate/${search.id}">
+                <i class='fas fa-check-circle'></i>
+                </a>
+                `}
     
              </td>
    
@@ -324,41 +367,5 @@ function searchSubSkills() {
 
 search_sub_skills.addEventListener('keyup', searchSubSkills)
 
-// CRUD = Create, Read, Update, Delete functionality
-//Skill CRUD
 
-skills_data_ui.addEventListener("click", updateSkill)
-
-//create popup UI for CRUD Icon Clicks
-function updateSkill(event) {
-    if(event.target.classList.contains('fa-pencil-alt')) {
-        let targetParent = event.target.parentElement.parentElement;
-        let skill_id = event.target.id;
-        fetch('/api/update_skill/' + skill_id).then(response => response.json()).then(data => updateSkillViewUI(data));
-          
-        
-    }
-    
-    
-} 
-function updateSkillViewUI(skill) {
-    let skills_and_subskills = document.getElementById("skills_and_subskills");
-    let manage_profile = document.getElementById("manage_profile");
-    manage_profile.style.gridTemplateColumns = "20% 80%";
-    skills_and_subskills.innerHTML = "";
-
-    skills_and_subskills.innerHTML += `
-    <div id="updateView">
-     <h1>Update this item</h1>
-     <form method='POST'>
-       <label for="skill_name">Skill Name:</label>
-       <input type="text" id="skill_name" value='${skill.skill_name}'>
-       <label for="order">Order:</label>
-       <input type="text" id="order" value='${skill.order}'>
-       <button type="submit" id="skill_update_btn" class='btn btn-update'>Update</button>
-     </form>
-   </div>
-    `
-}
-// skill update_btn 
 
